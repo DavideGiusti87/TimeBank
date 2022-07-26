@@ -1,4 +1,4 @@
-package it.develhope.TimeBank;
+package it.develhope.TimeBank.entities;
 
 public class AnonymousRequest {
     private String name;

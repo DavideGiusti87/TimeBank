@@ -1,6 +1,4 @@
-package it.develhope.TimeBank.entities;
-
-import java.time.LocalDateTime;
+package it.develhope.TimeBank.request;
 
 public class AnonymousRequest {
 

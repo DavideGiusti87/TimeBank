@@ -1,6 +1,6 @@
-package it.develhope.TimeBank.controller;
+package it.develhope.TimeBank.controllers;
 
-import it.develhope.TimeBank.entities.AnonymousRequest;
+import it.develhope.TimeBank.request.AnonymousRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

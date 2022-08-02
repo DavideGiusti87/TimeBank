@@ -6,7 +6,7 @@ Time Bank is a tool for a volunteering organization, where volunteers offer to s
 Requests are divided into categories depending on what kind of skills are required to finish the job (technical, educational, psychological, car-based, etc.).
 ## How does it work?
 - People in need can post a request either as registered users, if they prefer having their data saved and want to make the process of posting a request faster, or as guests, if they prefer remaining anonymous.
-- People who want to contribute as volunteers, they have to register and get verified by an admin.
+- People who want to contribute as volunteers, have to register and get verified by an admin.
 ## Tools used in the development process
 - Spring (Dependencies: Spring boot starter web, Lombok, Spring boot Maven plugin, Spring boot devtools, Spring boot starter test)
 - RESTful APIs

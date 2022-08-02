@@ -13,8 +13,8 @@ public class HelpRequestController {
     @GetMapping("/getAllRequests")
     public List<AnonymousRequest> getAllRequests() {
         List<AnonymousRequest> requests = new ArrayList<>();
-        requests.add(new AnonymousRequest("Carlo", "Mi serve un passaggio"));
-        requests.add(new AnonymousRequest("Mario", "Lavatrice rotta"));
+        requests.add(new AnonymousRequest("Request title", "Request description", "Name", 123456789));
+        requests.add(new AnonymousRequest("Request title2", "Request description2", "Name2", 987654321));
         return requests;
     }
 

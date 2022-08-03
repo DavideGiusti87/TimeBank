@@ -26,7 +26,7 @@ public class SpringFox {
                 .apiInfo(
                         new ApiInfo(
                                 "Time Bank",
-                                "Team project which consisting in the development of the back-end section of a web app.",
+                                "Team project which consist in the development of the back-end section of a web app.",
                                 "1.0",
                                 null,
                                 new Contact(

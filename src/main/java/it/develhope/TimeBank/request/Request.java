@@ -1,24 +1,50 @@
 package it.develhope.TimeBank.request;
 
+import it.develhope.TimeBank.Area;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table
 public class Request extends AnonymousRequest{
 
-    private User<> details;
-    /*qui immagino ci da una lista coi dati del user: nome, telefono, email
-    - più che una lista di User, secondo me all'interno della richiesta una delle variabili sarà un singolo oggetto di
-    tipo User, ovvero colui che sta eseguendo la richiesta
-     */
-    private String description;
-    private Skill skill;
-    private Area //Area e Address fanno parte dell'oggetto di tipo User, non sono sicura che vadano inseriti anche qui
-    private String address;
+    @Id
+    private long id;
 
-    //constructors - empty and parametric (from superclass)
+    @Column(unique = true, nullable = false)
+    private String email;
+    @Column(nullable = false)
+    private Area area;
 
-    public Request() {
-    }
+    public Request() {}
 
     public Request(String title, String description, String name, int phoneNumber) {
         super(title, description, name, phoneNumber);
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
 }

@@ -1,14 +1,26 @@
 package it.develhope.TimeBank.controllers;
 
+import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.request.AnonymousRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import it.develhope.TimeBank.request.Request;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class HelpRequestController {
+    @Autowired
+    private RequestRepository requestRepository;
+
+   /* @PostMapping("")
+    public Request createRequest(@RequestBody Request request){
+        request.setEmail(null);
+        request.setArea(null);
+        request.setId(100);
+        return requestRepository.save(request);
+    }*/
 
     @GetMapping("/getAllRequests")
     public List<AnonymousRequest> getAllRequests() {
@@ -18,4 +30,15 @@ public class HelpRequestController {
         return requests;
     }
 
+    @GetMapping("/area/{s}")
+    public List<Request> getArea(@PathVariable String s){
+        List<Request> byArea = new ArrayList<>();
+        return byArea;
+    }
+
+    @GetMapping("/skill/{s}")
+    public List<Request> getSkill(@PathVariable String s){
+        List<Request> bySkill = new ArrayList<>();
+        return bySkill;
+    }
 }

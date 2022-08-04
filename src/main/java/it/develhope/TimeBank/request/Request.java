@@ -6,9 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table
-public class Request extends AnonymousRequest{
+public class Request extends AbstractRequest{
 
     @Id
     private long id;
@@ -17,11 +20,32 @@ public class Request extends AnonymousRequest{
     private String email;
     @Column(nullable = false)
     private Area area;
-
+/*
     public Request() {}
 
     public Request(String title, String description, String name, int phoneNumber) {
         super(title, description, name, phoneNumber);
+    }
+*/
+
+    public Request(long id, String email, Area area) {
+        this.id = id;
+        this.email = email;
+        this.area = area;
+    }
+
+    public Request(String title, String description, String name, int phoneNumber, List<Skill> requiredSkill, LocalDate localDate, Area area, long id, String email, Area area1) {
+        super(title, description, name, phoneNumber, requiredSkill, localDate, area);
+        this.id = id;
+        this.email = email;
+        this.area = area1;
+    }
+
+    public Request() {
+    }
+
+    public Request(String title, String description, String name, int phoneNumber, List<Skill> requiredSkill, LocalDate localDate, Area area) {
+        super(title, description, name, phoneNumber, requiredSkill, localDate, area);
     }
 
     public long getId() {

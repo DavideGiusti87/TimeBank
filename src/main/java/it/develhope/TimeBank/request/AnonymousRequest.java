@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class AnonymousRequest {
+public class AnonymousRequest extends AbstractRequest{
 
     @Id
     private long id;

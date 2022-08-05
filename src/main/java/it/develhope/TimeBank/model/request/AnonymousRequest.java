@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.request;
+package it.develhope.TimeBank.model.request;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

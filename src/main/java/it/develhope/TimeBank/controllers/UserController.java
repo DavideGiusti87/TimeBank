@@ -1,6 +1,8 @@
 package it.develhope.TimeBank.controllers;
 
 import it.develhope.TimeBank.model.User;
+import it.develhope.TimeBank.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,9 +18,12 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
+    @Autowired
+    UserRepository userRepository;
+
     @PostMapping("/insertNewUser")
     public void insertNewUser(@RequestBody User user) {
-        // TODO API for insert a new User into the Database
+        userRepository.save(user);
         // TODO return an HTTP Response with the exit of the operation
     }
 

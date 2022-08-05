@@ -1,6 +1,6 @@
 package it.develhope.TimeBank.model.request;
 
-import it.develhope.TimeBank.Area;
+import it.develhope.TimeBank.model.Area;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

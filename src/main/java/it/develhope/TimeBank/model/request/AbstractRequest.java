@@ -1,7 +1,7 @@
 package it.develhope.TimeBank.model.request;
 
 
-import it.develhope.TimeBank.Area;
+import it.develhope.TimeBank.model.Area;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,10 +1,8 @@
 package it.develhope.TimeBank.model.request;
 
 import it.develhope.TimeBank.model.Area;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import org.springframework.data.annotation.Id;
+import it.develhope.TimeBank.model.Skill;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,6 +12,7 @@ import java.util.List;
 public class Request extends AbstractRequest{
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column(unique = true, nullable = false)

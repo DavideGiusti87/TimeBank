@@ -2,6 +2,7 @@ package it.develhope.TimeBank.model.request;
 
 
 import it.develhope.TimeBank.model.Area;
+import it.develhope.TimeBank.model.Skill;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

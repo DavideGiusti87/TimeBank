@@ -16,20 +16,22 @@ public class User {
     private String surname;
     private String telephoneNumber;
     private String email;
-    private Address address;
+
+    // TODO See what's the issue with Address
+    // private Address address;
     private Area area;
     private String password;
 
     public User() {
     }
 
-    public User(int id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password) {
+    public User(int id, String name, String surname, String telephoneNumber, String email, Area area, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
-        this.address = address;
+        // this.address = address;
         this.area = area;
         this.password = password;
     }
@@ -74,13 +76,13 @@ public class User {
         this.email = email;
     }
 
-    public Address getAddress() {
+   /* public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
+    } */
 
     public Area getArea() {
         return area;

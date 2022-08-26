@@ -1,11 +1,12 @@
 package it.develhope.TimeBank.controllers;
 
-import it.develhope.TimeBank.model.User;
+import it.develhope.TimeBank.entities.User;
 import it.develhope.TimeBank.repository.UserRepository;
+import it.develhope.TimeBank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,45 +20,40 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/insertNewUser")
-    public void insertNewUser(@RequestBody User user) {
-        userRepository.save(user);
-        // TODO return an HTTP Response with the exit of the operation
+    public ResponseEntity insertNewUser(@RequestBody User user){
+        return userService.insertNewUser(user);
     }
 
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
-        // TODO API for fetching the list of all users
-        return new ArrayList<>();
+        return userService.getAllUsers();
     }
 
     @GetMapping("/getUserByUsername")
     public User getUserByUsername(@RequestParam String username) {
-        // TODO API for fetching a single user by username
-        return new User();
+        return userService.getUserByUsername(username);
     }
 
 
-    @PutMapping("/updateUser")
-    public void updateUser(@RequestBody User updatedUser) {
-        // TODO API for updating User's informations
-        // TODO return an HTTP Response with the exit of the operation
+    @PutMapping("/{id}")
+    public void updateUser(@PathVariable Long id, @RequestBody User updateUser){
+        userService.updateUser(id, updateUser);
     }
 
 
     @DeleteMapping("/deleteUserByUsername")
     public void deleteUserByUsername(@RequestParam String username) {
-        // TODO API for deleting a User by username
-        // TODO return an HTTP Response with the exit of the operation
-
+        userService.deleteUserByUsername(username);
     }
 
-    @DeleteMapping("/deleteUserById")
-    public void deleteUserById(@RequestParam int id) {
-        // TODO API for deleting a User by id
-        // TODO return an HTTP Response with the exit of the operation
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
     }
-
 }

@@ -1,46 +1,41 @@
-package it.develhope.TimeBank.model;
+package it.develhope.TimeBank.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="users")
 public class User {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private String surname;
     private String telephoneNumber;
     private String email;
-
-    // TODO See what's the issue with Address
-    // private Address address;
+    private Address address;
     private Area area;
     private String password;
 
     public User() {
     }
 
-    public User(int id, String name, String surname, String telephoneNumber, String email, Area area, String password) {
+    public User(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
-        // this.address = address;
+        this.address = address;
         this.area = area;
         this.password = password;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,13 +71,13 @@ public class User {
         this.email = email;
     }
 
-   /* public Address getAddress() {
+   public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    } */
+    }
 
     public Area getArea() {
         return area;

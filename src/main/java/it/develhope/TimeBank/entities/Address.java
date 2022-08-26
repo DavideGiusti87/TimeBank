@@ -1,4 +1,5 @@
-package it.develhope.TimeBank.model;
+package it.develhope.TimeBank.entities;
+
 
 public class Address {
 

@@ -1,7 +1,7 @@
 package it.develhope.TimeBank.repository;
 
 
-import it.develhope.TimeBank.model.Skill;
+import it.develhope.TimeBank.entities.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,8 @@
-package it.develhope.TimeBank.model.request;
+package it.develhope.TimeBank.entities.request;
 
 
-import it.develhope.TimeBank.model.Area;
-import it.develhope.TimeBank.model.Skill;
+import it.develhope.TimeBank.entities.Area;
+import it.develhope.TimeBank.entities.Skill;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

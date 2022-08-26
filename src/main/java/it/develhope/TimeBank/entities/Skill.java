@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.model;
+package it.develhope.TimeBank.entities;
 
 
 import jakarta.persistence.*;
@@ -6,18 +6,21 @@ import jakarta.persistence.*;
 @Entity
 @Table
 public class Skill {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private String name;
     private String description;
 
     public Skill() {
     }
 
-    public Skill(Long id, String description) {
+    public Skill(Long id, String description, String name) {
         this.id = id;
+        this.name = name;
         this.description = description;
     }
 
@@ -37,7 +40,12 @@ public class Skill {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

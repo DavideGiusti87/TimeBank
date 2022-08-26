@@ -1,8 +1,8 @@
 package it.develhope.TimeBank.controllers;
 
 import it.develhope.TimeBank.repository.RequestRepository;
-import it.develhope.TimeBank.model.request.AnonymousRequest;
-import it.develhope.TimeBank.model.request.Request;
+import it.develhope.TimeBank.entities.request.AnonymousRequest;
+import it.develhope.TimeBank.entities.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

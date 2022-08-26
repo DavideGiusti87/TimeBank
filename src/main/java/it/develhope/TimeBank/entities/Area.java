@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.model;
+package it.develhope.TimeBank.entities;
 
 public enum Area {
     MILANO,

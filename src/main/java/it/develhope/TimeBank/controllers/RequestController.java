@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/requests")
-public class HelpRequestController {
+public class RequestController {
 
     @Autowired
     private RequestRepository requestRepository;

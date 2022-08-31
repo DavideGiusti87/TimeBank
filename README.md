@@ -17,4 +17,4 @@ Requests are divided into categories depending on what kind of skills are requir
 [Galatro Chiara](https://github.com/Sickiiara)<br>
 [Giunta Natalia](https://github.com/nsgiunta)<br>
 [Giusti Davide](https://github.com/DavideGiusti87)<br>
-[Pereira Wilk]()
+[Pereira Wilk](https://github.com/iWIPER)

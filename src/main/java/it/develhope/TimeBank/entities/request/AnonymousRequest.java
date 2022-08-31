@@ -11,19 +11,17 @@ public class AnonymousRequest extends AbstractRequest{
     @Id
     private long id;
 
-    //variables declaration
+
     private String title;
     private String description;
-    //private List<Skill> requiredSkills; - add class Skill first
-    //private LocalDateTime dateTime; - ?
+
     private String name;
     private int phoneNumber;
 
-    //empty constructor
     public AnonymousRequest() {
     }
 
-    //parametric constructor
+
     public AnonymousRequest(String title, String description, String name, int phoneNumber) {
         this.title = title;
         this.description = description;
@@ -31,7 +29,6 @@ public class AnonymousRequest extends AbstractRequest{
         this.phoneNumber = phoneNumber;
     }
 
-    //getters and setters
 
     public long getId() {
         return id;

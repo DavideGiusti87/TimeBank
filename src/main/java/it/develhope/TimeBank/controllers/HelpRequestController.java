@@ -1,44 +1,66 @@
 package it.develhope.TimeBank.controllers;
 
+import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.repository.RequestRepository;
-import it.develhope.TimeBank.entities.request.AnonymousRequest;
 import it.develhope.TimeBank.entities.request.Request;
+import it.develhope.TimeBank.repository.UserRepository;
+import it.develhope.TimeBank.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/requests")
 public class HelpRequestController {
+
     @Autowired
     private RequestRepository requestRepository;
+    @Autowired
+    private RequestService requestService;
+    @Autowired
+    private UserRepository userRepository;
 
-   /* @PostMapping("")
-    public Request createRequest(@RequestBody Request request){
-        request.setEmail(null);
-        request.setArea(null);
-        request.setId(100);
-        return requestRepository.save(request);
-    }*/
+   @PostMapping("/new")
+   public Request addRequest(@RequestBody Request request){
+       return requestService.saveRequest(request);
+   }
 
-    @GetMapping("/getAllRequests")
-    public List<AnonymousRequest> getAllRequests() {
-        List<AnonymousRequest> requests = new ArrayList<>();
-        requests.add(new AnonymousRequest("Request title", "Request description", "Name", 123456789));
-        requests.add(new AnonymousRequest("Request title2", "Request description2", "Name2", 987654321));
-        return requests;
+    @GetMapping("/getAll")
+    public List<Request> getAllRequests() {
+        return requestRepository.findAll();
     }
 
-    @GetMapping("/area/{s}")
-    public List<Request> getArea(@PathVariable String s){
-        List<Request> byArea = new ArrayList<>();
-        return byArea;
+    @GetMapping("/getById/{id}")
+    public Request getById(@PathVariable Long id){
+        return requestRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/skill/{s}")
-    public List<Request> getSkill(@PathVariable String s){
-        List<Request> bySkill = new ArrayList<>();
-        return bySkill;
+
+    @GetMapping("/getBySkill/{skill}")
+    public Request getBySkill(@PathVariable Skill skill){
+       return requestRepository.findBySkill(skill).orElse(null);
     }
+
+    @PutMapping("/update/{id}")
+    public void updateRequest(@PathVariable Long id, @RequestBody Request request){
+       requestService.updateRequest(id, request);
+    }
+
+
+    @DeleteMapping("/delete/byUsername/{username}")
+    public void deleteRequestsByUsername(@PathVariable String username) {
+        requestService.deleteRequestsByUsername(username);
+    }
+
+    @DeleteMapping("/delete/byId/{id}")
+    public void deleteById(@PathVariable Long id){
+       requestRepository.deleteById(id);
+    }
+
+    @DeleteMapping("/delete/all")
+    public void deleteAllRequests(){
+       requestRepository.deleteAll();
+    }
+
 }

@@ -2,12 +2,17 @@ package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.entities.request.AnonymousRequest;
 import it.develhope.TimeBank.entities.request.Request;
+import it.develhope.TimeBank.repository.RequestRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RequestService {
+
+    @Autowired
+    private RequestRepository requestRepository;
     
     public Request saveRequest(Request request){
         return request;

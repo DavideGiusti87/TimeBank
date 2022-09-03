@@ -34,7 +34,7 @@ public class UserService {
         /**
          * Qui usiamo optional senza il IF
           */
-        Optional<User> user = userRepository.getUserByName(username);
+        Optional<User> user = userRepository.getByName(username);
             return user.get();
     }
 

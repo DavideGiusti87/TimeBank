@@ -40,12 +40,8 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
-
     @PutMapping("/{id}")
-    public void updateUser(@PathVariable Long id, @RequestBody User updateUser){
-        userService.updateUser(id, updateUser);
-    }
-
+    public void updateUser(@PathVariable Long id, @RequestBody User updateUser){ userService.updateUser(id, updateUser); }
 
     @DeleteMapping("/deleteUserByUsername")
     public void deleteUserByUsername(@RequestParam String username) {

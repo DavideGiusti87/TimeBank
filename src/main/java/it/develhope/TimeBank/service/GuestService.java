@@ -32,7 +32,7 @@ public class GuestService {
     }
 
     public Guest getGuestByNickname(String nickname) {
-        Guest guest = guestRepository.getGuestByNickname(nickname);
+        Guest guest = guestRepository.getByNickname(nickname);
         return guest;
     }
 

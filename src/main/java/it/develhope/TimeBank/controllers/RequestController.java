@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/requests")
@@ -27,19 +28,19 @@ public class RequestController {
    }
 
     @GetMapping("/getAll")
-    public List<Request> getAllRequests() {
+    public List<Request>getAllRequests() {
         return requestRepository.findAll();
     }
 
     @GetMapping("/getById/{id}")
-    public Request getById(@PathVariable Long id){
-        return requestRepository.findById(id).orElse(null);
+    public Optional<Request> getById(@PathVariable Long id){
+        return requestService.findById(id);
     }
 
 
     @GetMapping("/getBySkill/{skill}")
-    public Request getBySkill(@PathVariable Skill skill){
-       return requestRepository.findBySkill(skill).orElse(null);
+    public Optional<Request> getBySkill(@PathVariable Skill skill){
+       return requestService.findBySkill(skill);
     }
 
     @PutMapping("/update/{id}")

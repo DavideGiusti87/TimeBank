@@ -16,9 +16,14 @@ public class GuestService {
     @Autowired
     private GuestRepository guestRepository;
 
-    public void createNewGuest(Guest guest){
-        guest.setId(null);
-        guestRepository.save(guest);
+    public ResponseEntity createNewGuest(Guest guest){
+        try{
+            guest.setId(null);
+            guestRepository.save(guest);
+            return ResponseEntity.status(HttpStatus.OK).build();}
+        catch(Exception ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 
     public ResponseEntity <List<Guest>> getAllGuests() {
@@ -31,33 +36,50 @@ public class GuestService {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    public Guest getGuestById(Long id) {
-        Optional<Guest> guest = guestRepository.findById(id);
-        return guest.get();
-    }
-
-    public Optional<Guest> getGuestByNickname(String nickname) {
-        Optional<Guest> guest = guestRepository.findByNickname(nickname);
-        return guest;
-    }
-
-
-    public ResponseEntity updateGuest(Long id, Guest updatedGuest) {
-        if(!guestRepository.existsById(id)){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        } else {
-            guestRepository.save(updatedGuest);
-            return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity <Guest> getGuestById(Long id) {
+        try{
+            Optional<Guest> guest = guestRepository.findById(id);
+            return new ResponseEntity<>(guest.get(),HttpStatus.OK);}
+        catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
-    public void deleteGuestById(Long id) {
-       guestRepository.deleteById(id);
+    public ResponseEntity <Optional<Guest>> getGuestByNickname(String nickname) {
+        try {
+            Optional<Guest> guest = guestRepository.findByNickname(nickname);
+            return new ResponseEntity<>(guest,HttpStatus.OK);
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
-    public void deleteGuestByNickname(String nickname){}
+    public ResponseEntity updateGuest(Long id, Guest updatedGuest) {
+        if(!guestRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+            guestRepository.save(updatedGuest);
+            return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
-    public void deleteAllGuests(){
+    public ResponseEntity deleteGuestById(Long id) {
+        if(id == null){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        guestRepository.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    public ResponseEntity deleteGuestByNickname(String nickname){
+        if(nickname == null){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        guestRepository.deleteByNickname(nickname);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    public ResponseEntity deleteAllGuests(){
         guestRepository.deleteAll();
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -75,8 +75,7 @@ public class UserService {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @DeleteMapping("/deleteUserById")
-    public ResponseEntity deleteUserById(@RequestParam Long id) {
+    public ResponseEntity deleteUserById(Long id) {
         if(id == null){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
@@ -84,7 +83,6 @@ public class UserService {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @DeleteMapping("/deleteAllUsers")
     public ResponseEntity deleteAllUsers(){
         userRepository.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).build();

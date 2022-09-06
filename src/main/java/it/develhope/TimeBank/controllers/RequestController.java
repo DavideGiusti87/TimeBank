@@ -6,6 +6,7 @@ import it.develhope.TimeBank.entities.request.Request;
 import it.develhope.TimeBank.repository.UserRepository;
 import it.develhope.TimeBank.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

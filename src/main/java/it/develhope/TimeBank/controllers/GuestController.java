@@ -5,6 +5,7 @@ import it.develhope.TimeBank.entities.Guest;
 import it.develhope.TimeBank.repository.GuestRepository;
 import it.develhope.TimeBank.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,42 +21,42 @@ public class GuestController {
     private GuestService guestService;
 
     @PostMapping("/create")
-    public void insertNewGuest(@RequestBody Guest guest){
-        guestService.createNewGuest(guest);
+    public ResponseEntity insertNewGuest(@RequestBody Guest guest){
+       return guestService.createNewGuest(guest);
     }
 
     @GetMapping("/fetchAll")
-    public List<Guest> getAllGuests() {
-        return (List<Guest>) guestService.getAllGuests();
+    public ResponseEntity <List<Guest>> getAllGuests() {
+        return guestService.getAllGuests();
     }
 
     @GetMapping("/{nickname}")
-    public Optional<Guest> getGuestByNickname(@PathVariable String nickname) {
+    public ResponseEntity <Optional<Guest>> getGuestByNickname(@PathVariable String nickname) {
         return guestService.getGuestByNickname(nickname);
     }
 
     @GetMapping("/{id}")
-    public Guest getGuestById(@PathVariable Long id) {
+    public ResponseEntity <Guest> getGuestById(@PathVariable Long id) {
         return guestService.getGuestById(id);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody Guest guest){
-        guestService.updateGuest(id,guest);
+    public ResponseEntity update(@PathVariable Long id, @RequestBody Guest guest){
+         return guestService.updateGuest(id,guest);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteGuest(@PathVariable Long id){
-        guestService.deleteGuestById(id);
+    public ResponseEntity deleteGuest(@PathVariable Long id){
+       return guestService.deleteGuestById(id);
     }
 
     @DeleteMapping("/{nickname}")
-    public void deleteGuestByNickname(@PathVariable String nickname) {
-       guestService.deleteGuestByNickname(nickname);
+    public ResponseEntity deleteGuestByNickname(@PathVariable String nickname) {
+      return guestService.deleteGuestByNickname(nickname);
     }
 
     @DeleteMapping("/deleteAll")
-    public void delete(){
-        guestService.deleteAllGuests();
+    public ResponseEntity delete(){
+       return guestService.deleteAllGuests();
     }
 }

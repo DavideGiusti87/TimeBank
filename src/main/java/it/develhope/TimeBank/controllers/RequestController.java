@@ -24,43 +24,43 @@ public class RequestController {
     private UserRepository userRepository;
 
    @PostMapping("/new")
-   public Request addRequest(@RequestBody Request request){
-       return requestService.saveRequest(request);
+   public ResponseEntity<Request> addRequest(@RequestBody Request request){
+       return requestService.createRequest(request);
    }
 
     @GetMapping("/fetchAll")
-    public List<Request>getAllRequests() {
-        return requestRepository.findAll();
+    public ResponseEntity<List<Request>> getAllRequests() {
+        return requestService.getAllRequests();
     }
 
     @GetMapping("/{id}")
-    public Optional<Request> getById(@PathVariable Long id){
-        return requestRepository.findById(id);
+    public ResponseEntity<Request> getById(@PathVariable Long id){
+        return requestService.getRequestById(id);
     }
 
     @GetMapping("/{skill}")
-    public Optional<Request> getBySkill(@PathVariable Skill skill){
-       return requestRepository.findBySkill(skill);
+    public ResponseEntity<Request> getBySkill(@PathVariable Skill skill){
+       return requestService.getRequestBySkill(skill);
     }
 
     @PutMapping("/{id}")
-    public void updateRequest(@PathVariable Long id, @RequestBody Request request){
-       requestService.updateRequest(id, request);
+    public ResponseEntity<Request> updateRequest(@PathVariable Long id, @RequestBody Request request){
+       return requestService.updateRequest(id, request);
     }
 
     @DeleteMapping("/{username}")
-    public void deleteRequestsByUsername(@PathVariable String username) {
-        requestService.deleteRequestsByUsername(username);
+    public ResponseEntity<Request> deleteRequestsByUsername(@PathVariable String username) {
+        return requestService.deleteByUsername(username);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id){
-       requestRepository.deleteById(id);
+    public ResponseEntity<Request> deleteById(@PathVariable Long id){
+       return requestService.deleteById(id);
     }
 
     @DeleteMapping("/deleteAll")
-    public void deleteAllRequests(){
-       requestRepository.deleteAll();
+    public ResponseEntity<Request> deleteAllRequests(){
+       return requestService.deleteAll();
     }
 
 }

@@ -30,6 +30,11 @@ public class UserService {
         return allUsers;
     }
 
+    public User getUserById(Long Id) {
+        Optional<User> user = userRepository.findById(Id);
+        return user.get();
+    }
+
     public User getUserByUsername(String username) {
         //API for fetching a single user by username
         /**

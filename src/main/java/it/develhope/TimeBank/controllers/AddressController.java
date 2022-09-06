@@ -20,26 +20,26 @@ public class AddressController {
         addressService.create(address);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/fetchAll")
     public List<Address> getAllAddress(){
         return addressService.getAll();
     }
 
-    @GetMapping("/getSingle/{id}")
+    @GetMapping("/{id}")
     public Optional<Address> getSingleAddress(@PathVariable Long id){
         return Optional.ofNullable(addressService.getSingle(id).orElse(null));
     }
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void update(@PathVariable Long id, @RequestBody Address address){
         addressService.update(id,address);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteSingleAddress(@PathVariable Long id){
         addressService.deleteSingle(id);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/deleteAll")
     public void delete(){
         addressService.deleteAll();
     }

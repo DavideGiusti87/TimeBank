@@ -25,26 +25,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/insertNewUser")
+    @PostMapping("/create")
     public ResponseEntity insertNewUser(@RequestBody User user){
         return userService.insertNewUser(user);
     }
 
-    @GetMapping("/getAllUsers")
+    @GetMapping("/fetchAll")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/getUserByUsername")
-    public User getUserByUsername(@RequestParam String username) {
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long Id) {return userService.getUserById(Id);}
+
+    @GetMapping("/{username}")
+    public User getUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
 
     @PutMapping("/{id}")
     public void updateUser(@PathVariable Long id, @RequestBody User updateUser){ userService.updateUser(id, updateUser); }
 
-    @DeleteMapping("/deleteUserByUsername")
-    public void deleteUserByUsername(@RequestParam String username) {
+    @DeleteMapping("/{username}")
+    public void deleteUserByUsername(@PathVariable String username) {
         userService.deleteUserByUsername(username);
     }
 

@@ -19,37 +19,37 @@ public class GuestController {
     @Autowired
     private GuestService guestService;
 
-    @PostMapping("/insertNewGuest")
+    @PostMapping("/create")
     public void insertNewGuest(@RequestBody Guest guest){
         guestService.createNewGuest(guest);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/fetchAll")
     public List<Guest> getAllGuests() {
         return (List<Guest>) guestService.getAllGuests();
     }
 
-    @GetMapping("/getByNickname")
-    public Optional<Guest> getGuestByNickname(@RequestParam String nickname) {
+    @GetMapping("/{nickname}")
+    public Optional<Guest> getGuestByNickname(@PathVariable String nickname) {
         return guestService.getGuestByNickname(nickname);
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("/{id}")
     public Guest getGuestById(@PathVariable Long id) {
         return guestService.getGuestById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void update(@PathVariable Long id, @RequestBody Guest guest){
         guestService.updateGuest(id,guest);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteGuest(@PathVariable Long id){
         guestService.deleteGuestById(id);
     }
 
-    @DeleteMapping("/delete/byNickname/{nickname}")
+    @DeleteMapping("/{nickname}")
     public void deleteGuestByNickname(@PathVariable String nickname) {
        guestService.deleteGuestByNickname(nickname);
     }

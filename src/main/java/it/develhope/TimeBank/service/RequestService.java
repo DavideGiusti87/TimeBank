@@ -14,8 +14,7 @@ public class RequestService {
     @Autowired
     private RequestRepository requestRepository;
     
-    public Request saveRequest(Request request){
-        request.setId(null);
+    public Request saveRequest(Request request){request.setId(null);
         return request;
     }
     public void updateRequest(Long id, Request request) {

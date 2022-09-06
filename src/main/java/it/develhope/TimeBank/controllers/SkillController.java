@@ -15,12 +15,10 @@ public class SkillController {
     @Autowired
     private SkillsService skillsService;
 
-    @PostMapping
-    public void create(@RequestBody Skill skill){
-        skillsService.create(skill);
-    }
+    @PostMapping("/create")
+    public void create(@RequestBody Skill skill){skillsService.create(skill);}
 
-    @GetMapping("/list")
+    @GetMapping("/fetchAll")
     public List <Skill> getAllSkills(){
       return skillsService.getAllSkills();
     }

@@ -28,39 +28,37 @@ public class RequestController {
        return requestService.saveRequest(request);
    }
 
-    @GetMapping("/getAll")
+    @GetMapping("/fetchAll")
     public List<Request>getAllRequests() {
         return requestRepository.findAll();
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("/{id}")
     public Optional<Request> getById(@PathVariable Long id){
-        return requestService.findById(id);
+        return requestRepository.findById(id);
     }
 
-
-    @GetMapping("/getBySkill/{skill}")
+    @GetMapping("/{skill}")
     public Optional<Request> getBySkill(@PathVariable Skill skill){
-       return requestService.findBySkill(skill);
+       return requestRepository.findBySkill(skill);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updateRequest(@PathVariable Long id, @RequestBody Request request){
        requestService.updateRequest(id, request);
     }
 
-
-    @DeleteMapping("/delete/byUsername/{username}")
+    @DeleteMapping("/{username}")
     public void deleteRequestsByUsername(@PathVariable String username) {
         requestService.deleteRequestsByUsername(username);
     }
 
-    @DeleteMapping("/delete/byId/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id){
        requestRepository.deleteById(id);
     }
 
-    @DeleteMapping("/delete/all")
+    @DeleteMapping("/deleteAll")
     public void deleteAllRequests(){
        requestRepository.deleteAll();
     }

@@ -17,7 +17,7 @@ public class SkillController {
     private SkillsService skillsService;
 
     @PostMapping("/create")
-    public ResponseEntity <Skill> create(@RequestBody Skill skill){
+    public ResponseEntity<Skill> create(@RequestBody Skill skill){
         return skillsService.create(skill);
     }
 

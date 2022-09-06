@@ -17,13 +17,13 @@ public class SkillsService {
     @Autowired
     private SkillRepository skillRepository;
 
-    public ResponseEntity create(Skill skill) {
+    public ResponseEntity<Skill> create(Skill skill) {
         try {
             skill.setId(null);
             skillRepository.save(skill);
             return ResponseEntity.status(HttpStatus.OK).build();
         }catch (Exception ex){
-            return ResponseEntity.badRequest().body(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

@@ -1,6 +1,6 @@
 package it.develhope.TimeBank.controllers;
 
-import it.develhope.TimeBank.entities.Address;
+//import it.develhope.TimeBank.entities.Address;
 import it.develhope.TimeBank.entities.Guest;
 import it.develhope.TimeBank.repository.GuestRepository;
 import it.develhope.TimeBank.service.GuestService;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/guests")
@@ -25,11 +26,11 @@ public class GuestController {
 
     @GetMapping("/getAll")
     public List<Guest> getAllGuests() {
-        return guestService.getAllGuests();
+        return (List<Guest>) guestService.getAllGuests();
     }
 
     @GetMapping("/getByNickname")
-    public Guest getGuestByNickname(@RequestParam String nickname) {
+    public Optional<Guest> getGuestByNickname(@RequestParam String nickname) {
         return guestService.getGuestByNickname(nickname);
     }
 

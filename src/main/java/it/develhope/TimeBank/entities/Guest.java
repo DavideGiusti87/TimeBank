@@ -20,7 +20,7 @@ public class Guest {
     public Guest() {
     }
 
-    public Guest(Long id, String name, String nickname, int phoneNumber, Address address) {
+    public Guest(Long id, String name, String nickname, int phoneNumber,Address address) {
         this.id = id;
         this.name = name;
         this.nickname = nickname;

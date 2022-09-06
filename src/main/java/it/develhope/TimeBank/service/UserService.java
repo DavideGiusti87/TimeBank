@@ -18,6 +18,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public ResponseEntity insertNewUser(User user){
+        user.setId(null);
         userRepository.save(user);
         //return an HTTP Response with the exit of the operation
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -34,7 +35,7 @@ public class UserService {
         /**
          * Qui usiamo optional senza il IF
           */
-        Optional<User> user = userRepository.getByName(username);
+        Optional<User> user = userRepository.findByName(username);
             return user.get();
     }
 

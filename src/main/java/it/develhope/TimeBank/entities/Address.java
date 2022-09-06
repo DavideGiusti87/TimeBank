@@ -5,11 +5,11 @@ import jakarta.persistence.*;
 @Entity
 @Table
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String street;
-    // we use a string because streetNumber can be for eg. "12/B"
     private String streetNumber;
     private String city;
     private String zipCode;
@@ -25,9 +25,7 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
     public void setId(Long id) {
         this.id = id;

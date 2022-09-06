@@ -21,7 +21,7 @@ public class SkillController {
     }
 
     @GetMapping("/list")
-    public List<Skill> getAllSkills(){
+    public List <Skill> getAllSkills(){
       return skillsService.getAllSkills();
     }
 
@@ -44,4 +44,5 @@ public class SkillController {
     public void deleteAll(){
         skillsService.deleteAll();
     }
+
 }

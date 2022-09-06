@@ -15,11 +15,13 @@ public class AddressService {
     private AddressRepository addressRepository;
 
     public void create(Address address){
+        address.setId(null);
         addressRepository.save(address);
     }
     public List<Address> getAll(){
         return addressRepository.findAll();
     }
+
     public Optional<Address> getSingle(Long id){
         return addressRepository.findById(id);
     }

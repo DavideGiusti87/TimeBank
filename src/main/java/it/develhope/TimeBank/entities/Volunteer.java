@@ -5,95 +5,32 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "volunteer")
+@Table(name = "volunteers")
 public class Volunteer extends User{
 
-    @Id
-    private Long id = getId();
-    private String name = getName();
-    private String surname = getSurname();
-    private String telephoneNumber = getTelephoneNumber();
-    private String email = getEmail();
-    private Address address = getAddress();
-    private String password = getPassword();
     private List <Skill> skills;
+    private boolean isAdmin = false;
 
-    public Volunteer() {
+        public Volunteer() {
     }
 
-    public Volunteer(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password, List <Skill> skills) {
+    public Volunteer(List<Skill> skills, boolean isAdmin) {
+        this.skills = skills;
+        this.isAdmin = isAdmin;
+    }
+
+    public Volunteer(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password, List<Skill> skills, boolean isAdmin) {
         super(id, name, surname, telephoneNumber, email, address, area, password);
         this.skills = skills;
+        this.isAdmin = isAdmin;
     }
 
-    @Override
-    public Long getId() {
-        return id;
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getSurname() {
-        return surname;
-    }
-
-    @Override
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @Override
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    @Override
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
-    }
-
-    @Override
-    public String getEmail() {
-        return email;
-    }
-
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public Address getAddress() {
-        return address;
-    }
-
-    @Override
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     public List<Skill> getSkills() {

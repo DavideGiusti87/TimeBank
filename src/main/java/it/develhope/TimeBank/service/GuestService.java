@@ -21,9 +21,14 @@ public class GuestService {
         guestRepository.save(guest);
     }
 
-    public List<Guest> getAllGuests() {
-        List <Guest> allGuests = guestRepository.findAll();
-        return allGuests;
+    public ResponseEntity <List<Guest>> getAllGuests() {
+
+        List<Guest> allGuestsList = guestRepository.findAll();
+
+        if(allGuestsList != null) {
+            return new ResponseEntity(allGuestsList, HttpStatus.OK);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     public Guest getGuestById(Long id) {
@@ -31,8 +36,8 @@ public class GuestService {
         return guest.get();
     }
 
-    public Guest getGuestByNickname(String nickname) {
-        Guest guest = guestRepository.getByNickname(nickname);
+    public Optional<Guest> getGuestByNickname(String nickname) {
+        Optional<Guest> guest = guestRepository.findByNickname(nickname);
         return guest;
     }
 

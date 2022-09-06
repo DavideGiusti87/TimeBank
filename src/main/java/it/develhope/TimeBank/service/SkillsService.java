@@ -14,6 +14,7 @@ public class SkillsService {
     private SkillRepository skillRepository;
 
     public void create(Skill skill) {
+        skill.setId(null);
         skillRepository.save(skill);
     }
 

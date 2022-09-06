@@ -4,7 +4,7 @@ package it.develhope.TimeBank.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "skills")
 public class Skill {
 
     @Id

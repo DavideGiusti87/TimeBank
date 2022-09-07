@@ -1,5 +1,7 @@
 package it.develhope.TimeBank.entities;
 
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,13 +10,18 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(value = "Id", notes = "Id of Guest")
     private Long id;
+    @ApiModelProperty(value = "name", notes = "name of Guest")
     @Column(unique = false, nullable = false)
     private String name;
+    @ApiModelProperty(value = "nickname", notes = "nickname of Guest")
     @Column(unique = true, nullable = false)
     private String nickname;
+    @ApiModelProperty(value = "phoneNumber", notes = "phoneNumber of Guest")
     @Column(unique = true, nullable = false)
     private int phoneNumber;
+    @ApiModelProperty(value = "address", notes = "address of Guest")
     private Address address;
 
     public Guest() {

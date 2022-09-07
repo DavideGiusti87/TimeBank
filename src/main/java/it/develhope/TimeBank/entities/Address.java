@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,10 +9,15 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(value = "Id", notes = "Id of Address")
     private Long id;
+    @ApiModelProperty(value = "street", notes = "street of address")
     private String street;
+    @ApiModelProperty(value = "streetNumber", notes = "streetNumber of address")
     private String streetNumber;
+    @ApiModelProperty(value = "city", notes = "city of address")
     private String city;
+    @ApiModelProperty(value = "zipCode", notes = "zipCode of address")
     private String zipCode;
 
     public Address() {

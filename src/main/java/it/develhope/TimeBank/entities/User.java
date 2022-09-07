@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,18 +9,26 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(value = "Id", notes = "Id of User")
     private Long id;
+    @ApiModelProperty(value = "name", notes = "name of User")
     @Column(nullable = false)
     private String name;
+    @ApiModelProperty(value = "surname", notes = "surname of User")
     @Column(nullable = false)
     private String surname;
+    @ApiModelProperty(value = "telephoneNumber", notes = "telephoneNumber of User")
     @Column(unique = true, nullable = false)
     private String telephoneNumber;
+    @ApiModelProperty(value = "email", notes = "email of User")
     @Column(unique = true, nullable = false)
     private String email;
+    @ApiModelProperty(value = "address", notes = "address of User")
     @Column(nullable = false)
     private Address address;
+    @ApiModelProperty(value = "area", notes = "area of User")
     private Area area;
+    @ApiModelProperty(value = "password", notes = "password of User")
     @Column(nullable = false)
     private String password;
 

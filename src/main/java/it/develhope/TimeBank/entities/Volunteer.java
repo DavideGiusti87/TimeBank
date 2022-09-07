@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,8 +11,11 @@ public class Volunteer extends User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(value = "Id", notes = "Id of User")
     private Long Id;
+    @ApiModelProperty(value = "skills", notes = "skills of User")
     private List <Skill> skills;
+    @ApiModelProperty(value = "isAdmin", notes = "is the User an Admin?")
     private boolean isAdmin = false;
 
         public Volunteer() {

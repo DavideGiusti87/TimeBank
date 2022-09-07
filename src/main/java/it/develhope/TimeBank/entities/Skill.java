@@ -1,6 +1,7 @@
 package it.develhope.TimeBank.entities;
 
 
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,9 +11,11 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
+    @ApiModelProperty(value = "Id", notes = "Id of Skill")
     private Long id;
-
+    @ApiModelProperty(value = "name", notes = "name of Skill")
     private String name;
+    @ApiModelProperty(value = "description", notes = "description of Skill")
     private String description;
 
     public Skill() {

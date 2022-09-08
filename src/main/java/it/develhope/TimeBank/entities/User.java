@@ -1,6 +1,10 @@
 package it.develhope.TimeBank.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.develhope.TimeBank.entities.request.Request;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -25,6 +29,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Request> requests;
 
 
     public User() {

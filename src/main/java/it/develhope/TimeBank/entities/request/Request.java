@@ -6,7 +6,10 @@ import it.develhope.TimeBank.entities.User;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -20,7 +23,19 @@ public class Request extends AbstractRequest{
     @JoinColumn(name = "user_id")
     private User user;
 
+
     private String username;
+
+    @ManyToMany(mappedBy = "requests")
+    private Set<Skill> skills = new HashSet<>();
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
 
     /*
     @Column(unique = true, nullable = false)

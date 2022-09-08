@@ -4,6 +4,10 @@ package it.develhope.TimeBank.entities;
 import it.develhope.TimeBank.entities.request.Request;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "skills")
 public class Skill {
@@ -17,8 +21,20 @@ public class Skill {
     @ManyToOne
     @JoinColumn(name = "Volunteer_Skill")
     private Volunteer volunteer;
-    @ManyToOne
-    private Request request;
+
+    @ManyToMany
+    @JoinTable(name = "skills_requests",
+            joinColumns = @JoinColumn(name = "skill_id"),
+            inverseJoinColumns = @JoinColumn(name = "requests_id"))
+    private Set<Request> requests = new HashSet<>();
+
+    public Set<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<Request> requests) {
+        this.requests = requests;
+    }
 
     public Skill() {
     }

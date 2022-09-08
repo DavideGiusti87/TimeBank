@@ -37,7 +37,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password) {
+    public User(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -46,6 +46,7 @@ public class User {
         this.address = address;
         this.area = area;
         this.password = password;
+        this.requests = requests;
     }
 
     public Long getId() {
@@ -88,7 +89,7 @@ public class User {
         this.email = email;
     }
 
-   public Address getAddress() {
+    public Address getAddress() {
         return address;
     }
 
@@ -110,5 +111,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<Request> requests) {
+        this.requests = requests;
     }
 }

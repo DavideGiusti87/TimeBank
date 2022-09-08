@@ -15,13 +15,18 @@ public class Skill {
     private String name;
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "Volunteer_Skill")
+    private Volunteer volunteer;
+
     public Skill() {
     }
 
-    public Skill(Long id, String description, String name) {
+    public Skill(Long id, String name, String description, Volunteer volunteer) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.volunteer = volunteer;
     }
 
     public Long getId() {
@@ -32,14 +37,6 @@ public class Skill {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getName() {
         return name;
     }
@@ -48,4 +45,19 @@ public class Skill {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Volunteer getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
+    }
 }

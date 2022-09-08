@@ -3,6 +3,7 @@ package it.develhope.TimeBank.controllers;
 import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.service.SkillsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,31 +17,33 @@ public class SkillController {
     private SkillsService skillsService;
 
     @PostMapping("/create")
-    public void create(@RequestBody Skill skill){skillsService.create(skill);}
+    public ResponseEntity<Skill> create(@RequestBody Skill skill){
+        return skillsService.create(skill);
+    }
 
     @GetMapping("/fetchAll")
-    public List <Skill> getAllSkills(){
+    public ResponseEntity <List <Skill>> getAllSkills(){
       return skillsService.getAllSkills();
     }
 
     @GetMapping("/{id}")
-    public Skill getASingleSkills(@PathVariable Long id){
+    public ResponseEntity<Skill> getASingleSkills(@PathVariable Long id){
        return skillsService.getASingleSkills(id);
     }
 
     @PutMapping("/{id}")
-    public Skill update(@PathVariable Long id, @RequestBody @NonNull Skill skill) throws Exception {
-        return skillsService.update(id, skill);
+    public ResponseEntity<Skill> update(@PathVariable Long id, @RequestBody @NonNull Skill skill) throws Exception {
+        return skillsService.updateSkill(id, skill);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
-        skillsService.delete(id);
+    public ResponseEntity<Skill> delete(@PathVariable Long id){
+        return skillsService.deleteById(id);
     }
 
     @DeleteMapping("/deleteAll")
-    public void deleteAll(){
-        skillsService.deleteAll();
+    public ResponseEntity<Skill> deleteAll(){
+        return skillsService.deleteAll();
     }
 
 }

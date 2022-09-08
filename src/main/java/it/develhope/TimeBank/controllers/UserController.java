@@ -31,28 +31,38 @@ public class UserController {
     }
 
     @GetMapping("/fetchAll")
-    public List<User> getAllUsers() {
+    public ResponseEntity <List<User>> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long Id) {return userService.getUserById(Id);}
+    public ResponseEntity <User> getUserById(@PathVariable Long Id) {
+        return userService.getUserById(Id); }
 
     @GetMapping("/{username}")
-    public User getUserByUsername(@PathVariable String username) {
+    public ResponseEntity <User> getUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
 
     @PutMapping("/{id}")
-    public void updateUser(@PathVariable Long id, @RequestBody User updateUser){ userService.updateUser(id, updateUser); }
+    public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User updateUser) {
+        return userService.updateUser(id, updateUser);
+    }
 
     @DeleteMapping("/{username}")
-    public void deleteUserByUsername(@PathVariable String username) {
-        userService.deleteUserByUsername(username);
+    public ResponseEntity deleteUserByUsername(@PathVariable String username) {
+       return userService.deleteUserByUsername(username);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUserById(@PathVariable Long id) {
-        userService.deleteUserById(id);
+    public ResponseEntity deleteUserById(@PathVariable Long id) {
+       return userService.deleteUserById(id);
     }
+
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity deleteAll(){
+        return userService.deleteAllUsers();
+    }
+
+
 }

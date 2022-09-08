@@ -28,7 +28,6 @@ public class User {
     private Area area;
     @Column(nullable = false)
     private String password;
-
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private Set<Request> requests;

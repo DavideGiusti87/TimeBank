@@ -60,4 +60,5 @@ public class Skill {
     public void setVolunteer(Volunteer volunteer) {
         this.volunteer = volunteer;
     }
+
 }

@@ -1,6 +1,7 @@
 package it.develhope.TimeBank.entities;
 
 
+import it.develhope.TimeBank.entities.request.Request;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,13 +12,13 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
     private String description;
-
     @ManyToOne
     @JoinColumn(name = "Volunteer_Skill")
     private Volunteer volunteer;
+    @ManyToOne
+    private Request request;
 
     public Skill() {
     }

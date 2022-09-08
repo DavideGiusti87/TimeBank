@@ -15,6 +15,8 @@ public class Guest {
     private String nickname;
     @Column(unique = true, nullable = false)
     private int phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public Guest() {

@@ -3,13 +3,20 @@ package it.develhope.TimeBank.entities.request;
 
 import it.develhope.TimeBank.entities.Area;
 import it.develhope.TimeBank.entities.Skill;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@MappedSuperclass
 public abstract class AbstractRequest {
 
+    @OneToMany
+    @JoinColumn(name = "skill_id")
     List<Skill> requiredSkill = new ArrayList<>();
     LocalDate localDate = LocalDate.now();
     Area area;

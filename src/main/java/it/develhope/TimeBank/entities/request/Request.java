@@ -20,6 +20,8 @@ public class Request extends AbstractRequest{
     @JoinColumn(name = "user_id")
     private User user;
 
+    private String username;
+
     /*
     @Column(unique = true, nullable = false)
     private String email;
@@ -34,19 +36,20 @@ public class Request extends AbstractRequest{
     }
 */
 
-
-    public Request() {
-    }
-
-    public Request(long id, User user) {
+    public Request(long id, User user, String username) {
         this.id = id;
         this.user = user;
+        this.username = username;
     }
 
-    public Request(String title, String description, String name, int phoneNumber, List<Skill> requiredSkill, LocalDate localDate, Area area, long id, User user) {
+    public Request(String title, String description, String name, int phoneNumber, List<Skill> requiredSkill, LocalDate localDate, Area area, long id, User user, String username) {
         super(title, description, name, phoneNumber, requiredSkill, localDate, area);
         this.id = id;
         this.user = user;
+        this.username = username;
+    }
+
+    public Request() {
     }
 
     public long getId() {
@@ -63,5 +66,13 @@ public class Request extends AbstractRequest{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

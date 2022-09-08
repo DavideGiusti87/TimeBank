@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -21,6 +21,10 @@ public class Address {
     @OneToMany(mappedBy = "address")
     @JsonIgnore
     private Set<User> users;
+
+    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    private Set <Guest> guests;
 
 
     public Address() {

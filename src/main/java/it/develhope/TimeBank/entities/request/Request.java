@@ -27,6 +27,10 @@ public class Request extends AbstractRequest{
     }
 */
 
+
+    public Request() {
+    }
+
     public Request(long id, String email, Area area) {
         this.id = id;
         this.email = email;
@@ -38,9 +42,6 @@ public class Request extends AbstractRequest{
         this.id = id;
         this.email = email;
         this.area = area1;
-    }
-
-    public Request() {
     }
 
     public Request(String title, String description, String name, int phoneNumber, List<Skill> requiredSkill, LocalDate localDate, Area area) {

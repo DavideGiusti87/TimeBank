@@ -17,11 +17,15 @@ public class User {
     private String telephoneNumber;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
+    @Enumerated
     private Area area;
     @Column(nullable = false)
     private String password;
+
+
 
     public User() {
     }

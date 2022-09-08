@@ -1,6 +1,10 @@
 package it.develhope.TimeBank.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -13,6 +17,11 @@ public class Address {
     private String streetNumber;
     private String city;
     private String zipCode;
+
+    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    private Set<User> users;
+
 
     public Address() {
     }

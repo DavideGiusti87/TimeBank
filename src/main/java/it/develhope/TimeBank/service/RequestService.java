@@ -1,7 +1,6 @@
 package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.entities.Skill;
-import it.develhope.TimeBank.entities.request.AnonymousRequest;
 import it.develhope.TimeBank.entities.request.Request;
 import it.develhope.TimeBank.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,30 +14,30 @@ public class Volunteer extends User{
 
     @OneToMany(mappedBy = "volunteer")
     @JsonIgnore
-    private List <Skill> skills;
+    private List <Skill> skill;
     private boolean isAdmin = false;
 
 
         public Volunteer() {
     }
 
-    public Volunteer(List<Skill> skills, boolean isAdmin) {
-        this.skills = skills;
+    public Volunteer(List<Skill> skill, boolean isAdmin) {
+        this.skill = skill;
         this.isAdmin = isAdmin;
     }
 
-    public Volunteer(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests, List<Skill> skills, boolean isAdmin) {
-        super(id, name, surname, telephoneNumber, email, address, area, password, requests);
-        this.skills = skills;
+    public Volunteer(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
+        super(id, name, surname, username, telephoneNumber, email, address, area, password, requests);
+        this.skill = skill;
         this.isAdmin = isAdmin;
     }
 
-    public List<Skill> getSkills() {
-        return skills;
+    public List<Skill> getSkill() {
+        return skill;
     }
 
-    public void setSkills(List<Skill> skills) {
-        this.skills = skills;
+    public void setSkill(List<Skill> skill) {
+        this.skill = skill;
     }
 
     public boolean isAdmin() {

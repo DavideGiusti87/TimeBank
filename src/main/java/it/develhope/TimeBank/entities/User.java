@@ -17,6 +17,7 @@ public class User {
     private String name;
     @Column(nullable = false)
     private String surname;
+    private String username;
     @Column(unique = true, nullable = false)
     private String telephoneNumber;
     @Column(unique = true, nullable = false)
@@ -36,10 +37,11 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests) {
+    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.username= username;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.address = address;
@@ -70,6 +72,14 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getTelephoneNumber() {

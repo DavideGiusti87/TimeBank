@@ -9,7 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "skills")
+@Table(name = "skill")
 public class Skill {
 
     @Id
@@ -23,17 +23,18 @@ public class Skill {
     private Volunteer volunteer;
 
     @ManyToMany
-    @JoinTable(name = "skills_requests",
+    @JoinTable(name = "skill_request",
             joinColumns = @JoinColumn(name = "skill_id"),
-            inverseJoinColumns = @JoinColumn(name = "requests_id"))
-    private Set<Request> requests = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "request_id"))
 
-    public Set<Request> getRequests() {
-        return requests;
+    private Set<Request> request = new HashSet<>();
+
+    public Set<Request> getRequest() {
+        return request;
     }
 
-    public void setRequests(Set<Request> requests) {
-        this.requests = requests;
+    public void setRequests(Set<Request> request) {
+        this.request = request;
     }
 
     public Skill() {

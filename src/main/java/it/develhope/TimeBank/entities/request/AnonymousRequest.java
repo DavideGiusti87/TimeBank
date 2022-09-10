@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.entities.request;
+/*package it.develhope.TimeBank.entities.request;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -69,4 +69,4 @@ public class AnonymousRequest extends AbstractRequest{
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-}
+}*/

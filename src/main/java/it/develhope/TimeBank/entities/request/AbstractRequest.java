@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.entities.request;
+/*package it.develhope.TimeBank.entities.request;
 
 
 import it.develhope.TimeBank.entities.Area;
@@ -89,4 +89,4 @@ public abstract class AbstractRequest {
         this.area = area;
     }
 
-}
+}*/

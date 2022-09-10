@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "volunteers")
+@Table(name = "volunteer")
 public class Volunteer extends User{
 
 

@@ -13,13 +13,13 @@ import java.util.Set;
 public class Skill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
     private String description;
     @ManyToOne
-    @JoinColumn(name = "Volunteer_Skill")
+    @JoinColumn(name = "volunteer_id")
     private Volunteer volunteer;
 
     @ManyToMany

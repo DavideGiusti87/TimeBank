@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity insertNewUser (User user){
+    public User insertNewUser (User user) throws Exception{
         try{
             user.setId(null);
             userRepository.save(user);
@@ -29,7 +29,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity <List<User>> getAllUsers() {
+    public List<User> getAllUsers() throws Exception{
 
         List<User> allUsers = userRepository.findAll();
         if(allUsers !=null){
@@ -40,7 +40,7 @@ public class UserService {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity <User> getUserById(Long Id) {
+    public User getUserById(Long Id) throws Exception{
         try{
             Optional <User> user = userRepository.findById(Id);
             return new ResponseEntity<>(user.get(),HttpStatus.OK);
@@ -50,7 +50,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity <User> getUserByUsername(String username) {
+    public User getUserByUsername(String username) throws Exception{
         try {
             Optional <User> user = userRepository.findByName(username);
             return new ResponseEntity<>(user.get(),HttpStatus.OK);
@@ -59,7 +59,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity updateUser(Long id, User updatedUser) {
+    public User updateUser(Long id, User updatedUser) throws Exception{
         if(!userRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -67,7 +67,7 @@ public class UserService {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    public ResponseEntity deleteUserByUsername(String username) {
+    public User deleteUserByUsername(String username) throws Exception{
         if(username == null){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
@@ -75,7 +75,7 @@ public class UserService {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    public ResponseEntity deleteUserById(Long id) {
+    public User deleteUserById(Long id) throws Exception{
         if(id == null){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
@@ -83,7 +83,7 @@ public class UserService {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    public ResponseEntity deleteAllUsers(){
+    public User deleteAllUsers() throws Exception{
         userRepository.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).build();
     }

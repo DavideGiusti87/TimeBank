@@ -4,6 +4,7 @@ import it.develhope.TimeBank.entities.Address;
 import it.develhope.TimeBank.repository.AddressRepository;
 import it.develhope.TimeBank.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,31 +21,59 @@ public class AddressController {
     private AddressRepository addressRepository;
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createAddress(@RequestBody Address address){
-        return addressService.create(address);
+    public ResponseEntity createAddress(@RequestBody Address address){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(addressService.create(address));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
-    @GetMapping("/fetchAll")
-    public ResponseEntity <List<Address>> getAllAddress(){
-        return addressService.getAll();
+    @PutMapping("/{username}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody Address address){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(addressService.update(id,address));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Address> getSingleAddress(@PathVariable Long id){
-        return addressService.getSingle(id);
+    public ResponseEntity getSingleAddress(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(addressService.getById(id));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
-    @PutMapping("/{username}")
-    public ResponseEntity<Address> update(@PathVariable Long id, @RequestBody Address address){
-        return addressService.update(id, address);
+    @GetMapping("/fetchAll")
+    public ResponseEntity getAllAddress(){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(addressService.getAll());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteSingleAddress(@PathVariable Long id){
-        return addressService.deleteSingle(id);
-    }
+    public ResponseEntity deleteBySingleId(@PathVariable Long id){
+
+            try {
+                return ResponseEntity.status(HttpStatus.OK).body(addressService.deleteAddressById(id));
+            }catch(Exception ex){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
 
     @DeleteMapping("/deleteAll")
-    public ResponseEntity<Object> delete(){
-        return addressService.deleteAll();
+    public ResponseEntity deleteAll(){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(addressService.deleteAll());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 }

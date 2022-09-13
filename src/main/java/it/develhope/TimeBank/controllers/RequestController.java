@@ -6,9 +6,11 @@ import it.develhope.TimeBank.entities.request.Request;
 import it.develhope.TimeBank.repository.UserRepository;
 import it.develhope.TimeBank.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,43 +26,76 @@ public class RequestController {
     private UserRepository userRepository;
 
    @PostMapping("/new")
-   public ResponseEntity<Request> addRequest(@RequestBody Request request){
-       return requestService.createRequest(request);
+   public ResponseEntity createRequest(@RequestBody Request request) throws Exception {
+       try {
+           return ResponseEntity.status(HttpStatus.OK).body(requestService.create(request));
+       }catch(Exception ex){
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+       }
    }
 
     @GetMapping("/fetchAll")
-    public ResponseEntity<List<Request>> getAllRequests() {
-        return requestService.getAllRequests();
+    public ResponseEntity getAllRequests() {
+        try {
+           return ResponseEntity.status(HttpStatus.OK).body(requestService.getAll());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Request> getById(@PathVariable Long id){
-        return requestService.getRequestById(id);
+    public ResponseEntity getById(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.getById(id));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @GetMapping("/{skill}")
-    public ResponseEntity<Request> getBySkill(@PathVariable Skill skill){
-       return requestService.getRequestBySkill(skill);
+    public ResponseEntity getBySkill(@PathVariable Skill skill){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.getBySkill(skill));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Request> updateRequest(@PathVariable Long id, @RequestBody Request request){
-       return requestService.updateRequest(id, request);
+    public ResponseEntity updateRequest(@PathVariable Long id, @RequestBody Request request){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.update(id,request));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/{username}")
-    public ResponseEntity<Request> deleteRequestsByUsername(@PathVariable String username) {
-        return requestService.deleteByUsername(username);
+    public ResponseEntity deleteRequestsByUsername(@PathVariable String username) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteByUsername(username));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Request> deleteById(@PathVariable Long id){
-       return requestService.deleteById(id);
+    public ResponseEntity deleteById(@PathVariable Long id){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteById(id));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/deleteAll")
-    public ResponseEntity<Request> deleteAllRequests(){
-       return requestService.deleteAll();
-    }
+    public ResponseEntity deleteAllRequests(){
 
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteAll());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
 }

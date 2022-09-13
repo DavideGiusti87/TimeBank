@@ -17,52 +17,56 @@ public class SkillsService {
     @Autowired
     private SkillRepository skillRepository;
 
-    public ResponseEntity<Skill> create(Skill skill) {
+    public Skill create(Skill skill) throws Exception{
         try {
             skill.setId(null);
-            skillRepository.save(skill);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return skillRepository.save(skill);
         }catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("Bad input");
         }
     }
 
-    public ResponseEntity<List<Skill>> getAllSkills() {
+    public Skill updateSkill(Long id, Skill skill) throws Exception{
+
+        if(!skillRepository.existsById(id)){
+            throw new Exception("Insert an existing Id");
+        }
+        return  skillRepository.save(skill);
+    }
+    public List<Skill> getAllSkills() throws Exception{
+
         List<Skill> allSkills = skillRepository.findAll();
-        if(allSkills != null){
-            return new ResponseEntity<>(allSkills, HttpStatus.OK);
+        if(allSkills.isEmpty()){
+            throw new Exception("The Skill list is empty");
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return allSkills;
     }
 
-    public ResponseEntity<Skill> getASingleSkills(Long id) {
+    public Optional<Skill> getASingleSkill(Long id) throws Exception{
+
         try {
             Optional<Skill> skill = skillRepository.findById(id);
-            return new ResponseEntity<>(skill.get(), HttpStatus.OK);
+            return skill;
         } catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("Id not found ");
         }
-
     }
 
-    public ResponseEntity<Skill> updateSkill(Long id, Skill skill) {
-        if(!skillRepository.existsById(id)){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    public Skill deleteById (@RequestParam Long id) throws Exception{
+
+        try{
+            if(skillRepository.existsById(id)) {
+               return skillRepository.deleteById(id);
+            }
+        }catch(Exception ex){
+            throw new Exception("Id not fund");
         }
-        skillRepository.save(skill);
-        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    public ResponseEntity<Skill> deleteById (@RequestParam Long id){
-        if(id == null){
-            return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public Skill deleteAll() throws Exception{
+        try {
+            return skillRepository.deleteAll();
+        }catch(Exception ex){
+            throw new Exception(ex.getMessage());
         }
-        skillRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-
-    public ResponseEntity<Skill> deleteAll(){
-        skillRepository.deleteAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 }

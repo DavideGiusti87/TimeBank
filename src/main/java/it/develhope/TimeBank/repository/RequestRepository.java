@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface RequestRepository extends JpaRepository<Request, Long> {
 
 
-    void deleteByUsername(String username);
+    Request deleteByUsername(String username);
 
     Optional<Request> findBySkill(Skill skill);
 }

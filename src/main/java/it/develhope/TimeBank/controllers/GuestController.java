@@ -5,6 +5,7 @@ import it.develhope.TimeBank.entities.Guest;
 import it.develhope.TimeBank.repository.GuestRepository;
 import it.develhope.TimeBank.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,41 +23,79 @@ public class GuestController {
 
     @PostMapping("/create")
     public ResponseEntity insertNewGuest(@RequestBody Guest guest){
-       return guestService.createNewGuest(guest);
-    }
 
-    @GetMapping("/fetchAll")
-    public ResponseEntity <List<Guest>> getAllGuests() {
-        return guestService.getAllGuests();
-    }
-
-    @GetMapping("/{nickname}")
-    public ResponseEntity <Optional<Guest>> getGuestByNickname(@PathVariable String nickname) {
-        return guestService.getGuestByNickname(nickname);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity <Guest> getGuestById(@PathVariable Long id) {
-        return guestService.getGuestById(id);
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.create(guest));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody Guest guest){
-         return guestService.updateGuest(id,guest);
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.updateGuest(id,guest));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+    @GetMapping("/fetchAll")
+    public ResponseEntity getAllGuests() {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.getAllGuests());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity getGuestById(@PathVariable Long id) {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.getGuestById(id));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+    @GetMapping("/{nickname}")
+    public ResponseEntity getGuestByNickname(@PathVariable String nickname) {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.getGuestByNickname(nickname));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteGuest(@PathVariable Long id){
-       return guestService.deleteGuestById(id);
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.deleteGuestById(id));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/{nickname}")
     public ResponseEntity deleteGuestByNickname(@PathVariable String nickname) {
-      return guestService.deleteGuestByNickname(nickname);
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.deleteGuestByNickname(nickname));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/deleteAll")
     public ResponseEntity delete(){
-       return guestService.deleteAllGuests();
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(guestService.deleteAllGuests());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 }

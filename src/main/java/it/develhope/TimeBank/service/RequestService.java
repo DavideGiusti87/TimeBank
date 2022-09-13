@@ -3,6 +3,7 @@ package it.develhope.TimeBank.service;
 import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.entities.request.Request;
 import it.develhope.TimeBank.repository.RequestRepository;
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,70 +18,75 @@ public class RequestService {
     @Autowired
     private RequestRepository requestRepository;
     
-    public ResponseEntity<Request> createRequest (Request request){
+    public Request create(Request request) throws Exception{
         try {
             request.setId(null);
-            requestRepository.save(request);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return requestRepository.save(request);
         }catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("Bad input");
         }
 
     }
-    public ResponseEntity<Request> updateRequest(Long id, Request request) {
-        if(requestRepository.existsById(id)){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    public Request update(Long id, Request request) throws Exception{
+
+        if(!requestRepository.existsById(id)){
+            throw new Exception("Insert an existing Id");
         }
-        requestRepository.save(request);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-    public ResponseEntity<Request> deleteByUsername(String username) {
-        requestRepository.deleteByUsername(username);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-    public ResponseEntity<Request> deleteRequestsById(Long id) {
-        requestRepository.deleteAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return requestRepository.save(request) ;
     }
 
-    public ResponseEntity<List<Request>> getAllRequests() {
+
+    public List<Request> getAll() throws Exception {
+
         List<Request> allRequests = requestRepository.findAll();
-        if(allRequests != null){
-            return new ResponseEntity<>(allRequests, HttpStatus.OK);
+        if(allRequests.isEmpty()){
+            throw new Exception("The request list is empty");
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return allRequests;
     }
 
-    public ResponseEntity<Request> getRequestById(Long id) {
+    public Optional<Request> getById(Long id) throws Exception {
         try {
             Optional<Request> request = requestRepository.findById(id);
-            return new ResponseEntity<>(request.get(), HttpStatus.OK);
+            return request;
         } catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("Id not found ");
         }
     }
 
-    public ResponseEntity<Request> getRequestBySkill(Skill skill) {
+    public Optional<Request> getBySkill(Skill skill) throws Exception {
         try{
             Optional<Request> request = requestRepository.findBySkill(skill);
-            return new ResponseEntity<>(request.get(), HttpStatus.OK);
+            return request;
         } catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("Skill not found");
         }
     }
 
-    public ResponseEntity<Request> deleteById(Long id) {
-        if(id == null){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public Request deleteByUsername(String username) throws Exception {
+       try{
+          return requestRepository.deleteByUsername(username);
+       }catch(Exception ex){
+           throw new Exception("Username not found");
+       }
+    }
+
+    public void deleteById(Long id) throws Exception {
+
+        try{
+            if(requestRepository.existsById(id)){
+               requestRepository.deleteById(id);
+            }
+        }catch(Exception ex){
+            throw new Exception("Id not found");
         }
-        requestRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    public ResponseEntity<Request> deleteAll(){
-        requestRepository.deleteAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public Request deleteAll() throws Exception {
+      try {
+          return requestRepository.deleteAll();
+      }catch(Exception ex){
+         throw new Exception(ex.getMessage());
+      }
     }
-
-
 }

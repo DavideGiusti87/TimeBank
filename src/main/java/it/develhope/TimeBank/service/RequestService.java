@@ -81,6 +81,7 @@ public class RequestService {
         }catch(Exception ex){
             throw new Exception("Id not found");
         }
+        return null;
     }
 
     public String deleteAll() throws Exception {

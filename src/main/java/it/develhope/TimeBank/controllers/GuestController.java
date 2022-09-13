@@ -83,6 +83,7 @@ public class GuestController {
 
     @DeleteMapping("/{nickname}")
     public ResponseEntity deleteGuestByNickname(@PathVariable String nickname) {
+
         try {
             return ResponseEntity.status(HttpStatus.OK).body(guestService.deleteGuestByNickname(nickname));
         }catch(Exception ex){
@@ -92,6 +93,7 @@ public class GuestController {
 
     @DeleteMapping("/deleteAll")
     public ResponseEntity delete(){
+
         try {
             return ResponseEntity.status(HttpStatus.OK).body(guestService.deleteAllGuests());
         }catch(Exception ex){

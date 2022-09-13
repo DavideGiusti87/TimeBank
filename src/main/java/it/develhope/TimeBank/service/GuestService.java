@@ -62,7 +62,7 @@ public class GuestService {
         }
     }
 
-    public void deleteGuestById(Long id) throws Exception{
+    public String deleteGuestById(Long id) throws Exception{
 
         try{
             if(guestRepository.existsById(id)){
@@ -71,9 +71,10 @@ public class GuestService {
         }catch(Exception ex){
             throw new Exception("Id not found");
         }
+        return "Bad input";
     }
 
-    public void deleteGuestByNickname(String nickname) throws Exception{
+    public String deleteGuestByNickname(String nickname) throws Exception{
 
         try{
             if(guestRepository.existsByNickname(nickname)){
@@ -82,14 +83,17 @@ public class GuestService {
         }catch(Exception ex){
             throw new Exception("Id not found");
         }
+        return "Bad input";
     }
 
 
-    public void deleteAllGuests() throws Exception{
+    public String deleteAllGuests() throws Exception{
+
         try{
             guestRepository.deleteAll();
         }catch(Exception ex){
             throw new Exception("Can not delete all");
         }
+        return "Bad input";
     }
 }

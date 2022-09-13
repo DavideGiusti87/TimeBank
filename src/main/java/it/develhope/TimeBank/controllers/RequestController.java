@@ -10,10 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/requests")
 public class RequestController {
@@ -70,20 +66,20 @@ public class RequestController {
         }
     }
 
-    @DeleteMapping("/{username}")
-    public ResponseEntity deleteRequestsByUsername(@PathVariable String username) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteByUsername(username));
-        }catch(Exception ex){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity deleteById(@PathVariable Long id){
 
         try {
             return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteById(id));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{username}")
+    public ResponseEntity deleteRequestsByUsername(@PathVariable String username) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteByUsername(username));
         }catch(Exception ex){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }

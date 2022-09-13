@@ -51,15 +51,20 @@ public class AddressService {
         }
     }
 
-    public Address deleteAddressById(Long id) throws Exception{
+    public String deleteAddressById(Long id) throws Exception{
+
         if(id == null){
             throw new Exception("Id not found");
         }
-        return addressRepository.deleteById(id);;
+        addressRepository.deleteById(id);
+        return "The address with Id " +id +" got deleted";
     }
-    public Address deleteAll() throws Exception{
+
+    public String deleteAll() throws Exception{
+
         try {
-            return addressRepository.deleteAll();
+            addressRepository.deleteAll();
+            return "All addresses got deleted";
         }catch(Exception ex){
             throw new Exception("Can not delete All");
         }

@@ -33,6 +33,7 @@ public class SkillsService {
         }
         return  skillRepository.save(skill);
     }
+
     public List<Skill> getAllSkills() throws Exception{
 
         List<Skill> allSkills = skillRepository.findAll();
@@ -52,21 +53,25 @@ public class SkillsService {
         }
     }
 
-    public Skill deleteById (@RequestParam Long id) throws Exception{
+    public String deleteById (@RequestParam Long id) throws Exception{
 
         try{
             if(skillRepository.existsById(id)) {
-               return skillRepository.deleteById(id);
-            }
+               skillRepository.deleteById(id);
+            return "The skill with id: " +id +" got deleted";}
         }catch(Exception ex){
             throw new Exception("Id not fund");
         }
+        return "Bad input";
     }
 
-    public Skill deleteAll() throws Exception{
+    public String deleteAll() throws Exception{
+
         try {
-            return skillRepository.deleteAll();
+            skillRepository.deleteAll();
+            return "All skills got deleted";
         }catch(Exception ex){
-            throw new Exception(ex.getMessage());
+            throw new Exception("Bad input");
         }
+    }
 }

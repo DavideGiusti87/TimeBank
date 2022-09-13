@@ -71,20 +71,22 @@ public class RequestService {
        }
     }
 
-    public void deleteById(Long id) throws Exception {
+    public String deleteById(Long id) throws Exception {
 
         try{
             if(requestRepository.existsById(id)){
                requestRepository.deleteById(id);
+               return "The request with id " + id + " has been deleted.";
             }
         }catch(Exception ex){
             throw new Exception("Id not found");
         }
     }
 
-    public Request deleteAll() throws Exception {
+    public String deleteAll() throws Exception {
       try {
-          return requestRepository.deleteAll();
+          requestRepository.deleteAll();
+          return "All requests have been deleted.";
       }catch(Exception ex){
          throw new Exception(ex.getMessage());
       }

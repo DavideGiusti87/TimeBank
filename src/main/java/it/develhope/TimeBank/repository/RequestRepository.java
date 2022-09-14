@@ -14,4 +14,6 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     void deleteByUsername(String username);
 
     Optional<Request> findBySkill(Skill skill);
+
+    /*Optional<Request> findBySkill(Set<Skill> skill);*/
 }

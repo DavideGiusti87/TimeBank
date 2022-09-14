@@ -3,11 +3,11 @@ package it.develhope.TimeBank.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "guest")
+@Table(name = "guests")
 public class Guest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(unique = false, nullable = false)
     private String name;
@@ -15,8 +15,6 @@ public class Guest {
     private String nickname;
     @Column(unique = true, nullable = false)
     private int phoneNumber;
-    @ManyToOne
-    @JoinColumn(name = "address_id")
     private Address address;
 
     public Guest() {

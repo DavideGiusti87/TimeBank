@@ -1,53 +1,40 @@
 package it.develhope.TimeBank.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.develhope.TimeBank.entities.request.Request;
 import jakarta.persistence.*;
-
-import java.util.Set;
 
 @Entity
 @Table(name="users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String surname;
-    private String username;
     @Column(unique = true, nullable = false)
     private String telephoneNumber;
     @Column(unique = true, nullable = false)
     private String email;
-    @ManyToOne
-    @JoinColumn(name = "address_id")
+    @Column(nullable = false)
     private Address address;
-    @Enumerated
     private Area area;
     @Column(nullable = false)
     private String password;
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private Set<Request> requests;
-
 
     public User() {
     }
 
-    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests) {
+    public User(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.username= username;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.address = address;
         this.area = area;
         this.password = password;
-        this.requests = requests;
     }
 
     public Long getId() {
@@ -74,14 +61,6 @@ public class User {
         this.surname = surname;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getTelephoneNumber() {
         return telephoneNumber;
     }
@@ -98,7 +77,7 @@ public class User {
         this.email = email;
     }
 
-    public Address getAddress() {
+   public Address getAddress() {
         return address;
     }
 
@@ -120,13 +99,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Set<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(Set<Request> requests) {
-        this.requests = requests;
     }
 }

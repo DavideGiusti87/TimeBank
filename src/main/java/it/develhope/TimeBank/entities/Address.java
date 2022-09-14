@@ -1,31 +1,18 @@
 package it.develhope.TimeBank.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
-@Table(name = "address")
+@Table
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String street;
     private String streetNumber;
     private String city;
     private String zipCode;
-
-    @OneToMany(mappedBy = "address")
-    @JsonIgnore
-    private Set<User> users;
-
-    @OneToMany(mappedBy = "address")
-    @JsonIgnore
-    private Set <Guest> guests;
-
 
     public Address() {
     }

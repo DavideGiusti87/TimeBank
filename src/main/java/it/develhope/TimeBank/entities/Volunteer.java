@@ -26,8 +26,14 @@ public class Volunteer extends User{
         this.isAdmin = isAdmin;
     }
 
-    public Volunteer(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
-        super(id, name, surname, username, telephoneNumber, email, address, area, password, requests);
+    public Volunteer(Long id, Address address, Area area, String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
+        super(id, address, area, password, requests);
+        this.skill = skill;
+        this.isAdmin = isAdmin;
+    }
+
+    public Volunteer(String name, String surname, String username, String telephoneNumber, String email, Long id, Address address, Area area, String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
+        super(name, surname, username, telephoneNumber, email, id, address, area, password, requests);
         this.skill = skill;
         this.isAdmin = isAdmin;
     }

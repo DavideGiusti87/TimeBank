@@ -19,7 +19,6 @@ public class AddressService {
     public Address create(Address address) throws Exception {
         try{
             address.setId(null);
-            addressRepository.save(address);
             return addressRepository.save(address);
         }catch(Exception ex){
             throw new Exception("Bad input");

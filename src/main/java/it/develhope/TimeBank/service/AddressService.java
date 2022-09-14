@@ -24,6 +24,7 @@ public class AddressService {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
+
     public ResponseEntity<List<Address>> getAll(){
         List<Address>address = addressRepository.findAll();
         if (!address.isEmpty()){

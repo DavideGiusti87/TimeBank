@@ -2,22 +2,16 @@ package it.develhope.TimeBank.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import it.develhope.TimeBank.entities.request.Request;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.Set;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User extends Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-    @Enumerated
-    private Area area;
     @Column(nullable = false)
     private String password;
     @OneToMany(mappedBy = "user")
@@ -28,45 +22,15 @@ public class User extends Person {
     public User() {
     }
 
-    public User(Long id, Address address, Area area, String password, Set<Request> requests) {
-        this.id = id;
-        this.address = address;
-        this.area = area;
+    public User(String password, Set<Request> requests) {
         this.password = password;
         this.requests = requests;
     }
 
-    public User(String name, String surname, String username, String telephoneNumber, String email, Long id, Address address, Area area, String password, Set<Request> requests) {
-        super(name, surname, username, telephoneNumber, email);
-        this.id = id;
-        this.address = address;
-        this.area = area;
+    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests) {
+        super(id, name, surname, username, telephoneNumber, email, address, area);
         this.password = password;
         this.requests = requests;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
     }
 
     public String getPassword() {

@@ -3,6 +3,8 @@ package it.develhope.TimeBank.controllers;
 import it.develhope.TimeBank.entities.Address;
 import it.develhope.TimeBank.repository.AddressRepository;
 import it.develhope.TimeBank.service.AddressService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,6 @@ public class AddressController {
 
     @PostMapping("/create")
     public ResponseEntity createAddress(@RequestBody Address address){
-
         try {
             return ResponseEntity.status(HttpStatus.OK).body(addressService.create(address));
         }catch(Exception ex){

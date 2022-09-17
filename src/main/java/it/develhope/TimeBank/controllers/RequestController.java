@@ -5,6 +5,8 @@ import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.entities.request.Request;
 import it.develhope.TimeBank.repository.UserRepository;
 import it.develhope.TimeBank.service.RequestService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +23,15 @@ public class RequestController {
     @Autowired
     private UserRepository userRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(RequestController.class);
+
    @PostMapping("/new")
    public ResponseEntity createRequest(@RequestBody Request request) throws Exception {
        try {
+           logger.info("Create a Request");
            return ResponseEntity.status(HttpStatus.OK).body(requestService.create(request));
        }catch(Exception ex){
+           logger.error(ex.toString());
            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
        }
    }
@@ -33,8 +39,10 @@ public class RequestController {
     @GetMapping("/fetchAll")
     public ResponseEntity getAllRequests() {
         try {
+            logger.info("Get all request");
            return ResponseEntity.status(HttpStatus.OK).body(requestService.getAll());
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -42,8 +50,10 @@ public class RequestController {
     @GetMapping("/{id}")
     public ResponseEntity getById(@PathVariable Long id){
         try {
+            logger.info("Get a request by id");
             return ResponseEntity.status(HttpStatus.OK).body(requestService.getById(id));
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -51,8 +61,10 @@ public class RequestController {
     @GetMapping("/{skill}")
     public ResponseEntity getBySkill(@PathVariable Skill skill){
         try {
+            logger.info("Get a request by skill");
             return ResponseEntity.status(HttpStatus.OK).body(requestService.getBySkill(skill));
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -60,8 +72,10 @@ public class RequestController {
     @PutMapping("/{id}")
     public ResponseEntity updateRequest(@PathVariable Long id, @RequestBody Request request){
         try {
+            logger.info("Edit a request");
             return ResponseEntity.status(HttpStatus.OK).body(requestService.update(id,request));
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -70,8 +84,10 @@ public class RequestController {
     public ResponseEntity deleteById(@PathVariable Long id){
 
         try {
+            logger.info("Delete a request by id");
             return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteById(id));
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -79,8 +95,10 @@ public class RequestController {
     @DeleteMapping("/{username}")
     public ResponseEntity deleteRequestsByUsername(@PathVariable String username) {
         try {
+            logger.info("Delete a request by username");
             return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteByUsername(username));
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -89,8 +107,10 @@ public class RequestController {
     public ResponseEntity deleteAllRequests(){
 
         try {
+            logger.info("Delete all requests");
             return ResponseEntity.status(HttpStatus.OK).body(requestService.deleteAll());
         }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }

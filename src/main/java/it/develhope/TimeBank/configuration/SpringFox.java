@@ -13,7 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.Collections;
 
-/*@Configuration
+@Configuration
 public class SpringFox {
 
     @Bean
@@ -42,4 +42,4 @@ public class SpringFox {
                         new Tag("Help Request Controller","Show the request by root")
                 );
     }
-}*/
+}

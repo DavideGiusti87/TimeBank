@@ -1,43 +1,51 @@
 package it.develhope.TimeBank.entities;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.develhope.TimeBank.entities.request.Request;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "volunteers")
-public class Volunteer extends User{
+@Table(name = "volunteer")
+public class Volunteer extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    private List <Skill> skills;
+
+    @OneToMany(mappedBy = "volunteer")
+    @JsonIgnore
+    private List<Skill> skill;
     private boolean isAdmin = false;
 
-        public Volunteer() {
+
+    public Volunteer() {
     }
 
-    public Volunteer(Long id, List<Skill> skills, boolean isAdmin) {
-        Id = id;
-        this.skills = skills;
+    public Volunteer(List<Skill> skill, boolean isAdmin) {
+        this.skill = skill;
         this.isAdmin = isAdmin;
     }
 
-    public Volunteer(Long id, String name, String surname, String telephoneNumber, String email, Address address, Area area, String password, Long id1, List<Skill> skills, boolean isAdmin) {
-        super(id, name, surname, telephoneNumber, email, address, area, password);
-        Id = id1;
-        this.skills = skills;
+    public Volunteer(String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
+        super(password, requests);
+        this.skill = skill;
         this.isAdmin = isAdmin;
     }
 
-    @Override
-    public Long getId() {
-        return Id;
+    public Volunteer(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
+        super(id, name, surname, username, telephoneNumber, email, address, area, password, requests);
+        this.skill = skill;
+        this.isAdmin = isAdmin;
     }
 
-    @Override
-    public void setId(Long id) {
-        Id = id;
+    public List<Skill> getSkill() {
+        return skill;
+    }
+
+    public void setSkill(List<Skill> skill) {
+        this.skill = skill;
     }
 
     public boolean isAdmin() {
@@ -46,13 +54,5 @@ public class Volunteer extends User{
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
-    }
-
-    public List<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(List<Skill> skills) {
-        this.skills = skills;
     }
 }

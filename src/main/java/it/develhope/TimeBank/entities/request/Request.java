@@ -18,7 +18,7 @@ public class Request {
     @JoinColumn(name = "user_id")
     private User user;
     private String username;
-    @ManyToMany(mappedBy = "requests")
+    @ManyToMany(mappedBy = "request")
     private Set<Skill> skill = new HashSet<>();
 
     public Request() {

@@ -1,13 +1,14 @@
 package it.develhope.TimeBank.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "guests")
+@Table(name = "guest")
 public class Guest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = false, nullable = false)
     private String name;
@@ -15,6 +16,8 @@ public class Guest {
     private String nickname;
     @Column(unique = true, nullable = false)
     private int phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public Guest() {

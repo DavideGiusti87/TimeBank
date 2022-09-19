@@ -1,9 +1,10 @@
 package it.develhope.TimeBank.controllers;
 
-import io.swagger.annotations.ApiOperation;
 import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.repository.VolunteerRepository;
 import it.develhope.TimeBank.service.VolunteerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,24 +22,28 @@ public class VolunteerController {
     @Autowired
     private VolunteerService volunteerService;
 
+    private static final Logger logger = LoggerFactory.getLogger(VolunteerController.class);
+
     @GetMapping("/fetchAll")
-    @ApiOperation(value = "fetchAll", notes = "get all user")
     public ResponseEntity getAllUsers() {
 
         try {
+            logger.info("Get all Volunteers");
             return ResponseEntity.status(HttpStatus.OK).body(volunteerService.getAllVolunteers());
-        } catch (Exception ex) {
+        }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
 
     @GetMapping("/{skill}")
-    @ApiOperation(value = "skill", notes = "get volunteer by skill")
     public ResponseEntity getVolunteerBySkill(@PathVariable Skill skill) {
 
         try {
+            logger.info("Get all Volunteers by Skill");
             return ResponseEntity.status(HttpStatus.OK).body(volunteerService.getVolunteerBySkill(skill));
-        } catch (Exception ex) {
+        }catch(Exception ex){
+            logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }

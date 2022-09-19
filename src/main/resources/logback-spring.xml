@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
 
     <property name="LOGS" value="./myCustomLogs" />
@@ -40,7 +39,7 @@
     </root>
 
     <!-- LOG "co.develhope.logging" at TRACE level -->
-    <logger name="co.develhope.logging" level="trace" additivity="false">
+    <logger name="it.develhope.Loggingesercizio" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>

@@ -1,6 +1,5 @@
 spring:
   mvc:
-<<<<<<< HEAD
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
@@ -13,11 +12,10 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
-=======
-    path match:
-      matching-strategy: ant_path_matcher
 
   logging:
      level:
         root: INFO
->>>>>>> SwaggerLog2
+  output:
+    ansi:
+      enabled: ALWAYS

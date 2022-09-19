@@ -13,6 +13,7 @@ public class Address {
     private String streetNumber;
     private String city;
     private String zipCode;
+    
 
     public Address() {
     }

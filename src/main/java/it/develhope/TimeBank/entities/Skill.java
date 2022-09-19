@@ -4,41 +4,46 @@ package it.develhope.TimeBank.entities;
 import it.develhope.TimeBank.entities.request.Request;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "skills")
+@Table(name = "skill")
 public class Skill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "volunteer_id")
+    private Volunteer volunteer;
 
     @ManyToMany
-    @JoinTable(name = "skills_request",
-            joinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "request_id"))
-    private Set<Request> requests = new LinkedHashSet<>();
+    @JoinTable(name = "skill_request",
+            joinColumns = @JoinColumn(name = "skill_id"),
+            inverseJoinColumns = @JoinColumn(name = "request_id"))
+    private Set<Request> request = new HashSet<>();
 
-    public Set<Request> getRequests() {
-        return requests;
+    public Set<Request> getRequest() {
+        return request;
     }
 
-    public void setRequests(Set<Request> requests) {
-        this.requests = requests;
+    public void setRequests(Set<Request> request) {
+        this.request = request;
     }
 
     public Skill() {
     }
 
-    public Skill(Long id, String description, String name) {
+    public Skill(Long id, String name, String description, Volunteer volunteer) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.volunteer = volunteer;
     }
 
     public Long getId() {
@@ -49,6 +54,14 @@ public class Skill {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -57,12 +70,12 @@ public class Skill {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public Volunteer getVolunteer() {
+        return volunteer;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
     }
 
 }

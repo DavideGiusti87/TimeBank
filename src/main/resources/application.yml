@@ -10,12 +10,14 @@ spring:
   jpa:
     database: mysql
     show-sql: true
+    open-in-view: 'false'
+
     hibernate:
       ddl-auto: create-drop
 
   logging:
      level:
-        root: INFO
+       root: INFO
   output:
     ansi:
       enabled: ALWAYS

@@ -17,74 +17,85 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity insertNewUser (User user){
+    public User createNewUser (User user) throws Exception{
         try{
             user.setId(null);
             userRepository.save(user);
             //Primo metodo di ritorno di ResponseEntity
-            return ResponseEntity.status(HttpStatus.OK).build();}
+            return userRepository.save(user); }
         catch(Exception ex){
-            //Secondo metodo di ritorno di ResponseEntity
-            return ResponseEntity.badRequest().body(ex.getMessage());
+            //Secondo metodo di ritorno di ResponseEntity;
+            throw new Exception("Bad input");
         }
     }
 
-    public ResponseEntity <List<User>> getAllUsers() {
+    public User updateUser(Long id, User updatedUser) throws Exception{
+
+        if(!userRepository.existsById(id)) {
+            throw new Exception("Insert an existing Id");
+        }
+        return userRepository.save(updatedUser);
+    }
+
+    public List<User> getAllUsers() throws Exception{
 
         List<User> allUsers = userRepository.findAll();
-        if(allUsers !=null){
-            //Terzo metodo di ritorno di ResponseEntity
-            //Quale è meglio usare?
-            return new ResponseEntity<>(allUsers, HttpStatus.OK);
+        if(allUsers.isEmpty()){
+            throw new Exception("The Skill list is empty");
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return allUsers;
+
     }
 
-    public ResponseEntity <User> getUserById(Long Id) {
+    public Optional<User> getUserById(Long Id) throws Exception{
+
         try{
             Optional <User> user = userRepository.findById(Id);
-            return new ResponseEntity<>(user.get(),HttpStatus.OK);
-        }
-        catch(Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return user;
+        } catch(Exception ex){
+            throw new Exception("Id not found ");
         }
     }
 
-    public ResponseEntity <User> getUserByUsername(String username) {
+    public Optional<User> getUserByUsername(String username) throws Exception{
+
         try {
             Optional <User> user = userRepository.findByName(username);
-            return new ResponseEntity<>(user.get(),HttpStatus.OK);
+            return user;
         }catch(Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+           throw new Exception("Username not found");
         }
     }
 
-    public ResponseEntity updateUser(Long id, User updatedUser) {
-        if(!userRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    public User deleteUserByUsername(String username) throws Exception{
+
+        try{
+            return userRepository.deleteByUsername(username);
+        }catch(Exception ex){
+            throw new Exception("Username not found");
         }
-        userRepository.save(updatedUser);
-        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    public ResponseEntity deleteUserByUsername(String username) {
-        if(username == null){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public String deleteUserById(Long id) throws Exception{
+
+        try{
+            if(userRepository.existsById(id)){
+            userRepository.deleteById(id);
+            return "The user with id: " + id + " got deleted";
+            }
+        }catch(Exception ex){
+            throw new Exception("Id not found");
         }
-        userRepository.deleteByUsername(username);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return "User not found";
     }
 
-    public ResponseEntity deleteUserById(Long id) {
-        if(id == null){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        userRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
+    public String deleteAllUsers() throws Exception{
 
-    public ResponseEntity deleteAllUsers(){
-        userRepository.deleteAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
+        try{
+            userRepository.deleteAll();
+            return "All users got deleted";
+        }catch(Exception ex){
+            throw new Exception("Bad request");
+        }
     }
 }

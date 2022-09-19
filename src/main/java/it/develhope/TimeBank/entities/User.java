@@ -3,7 +3,7 @@ package it.develhope.TimeBank.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name="user")
 public class User {
 
     @Id

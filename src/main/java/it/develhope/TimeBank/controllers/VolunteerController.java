@@ -6,6 +6,7 @@ import it.develhope.TimeBank.entities.Volunteer;
 import it.develhope.TimeBank.repository.VolunteerRepository;
 import it.develhope.TimeBank.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,13 +25,22 @@ public class VolunteerController {
     private VolunteerService volunteerService;
 
     @GetMapping("/fetchAll")
-    public ResponseEntity<List<Volunteer>> getAllUsers() {
-        return volunteerService.getAllVolunteers();
+    public ResponseEntity getAllUsers() {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(volunteerService.getAllVolunteers());
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
     @GetMapping("/{skill}")
-    public ResponseEntity<Volunteer> getVolunteerBySkill(@PathVariable Skill skill) {
-        return volunteerService.getVolunteerBySkill(skill);
-    }
+    public ResponseEntity getVolunteerBySkill(@PathVariable Skill skill) {
 
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(volunteerService.getVolunteerBySkill(skill));
+        }catch(Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
 }

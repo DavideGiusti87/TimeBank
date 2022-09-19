@@ -16,70 +16,84 @@ public class GuestService {
     @Autowired
     private GuestRepository guestRepository;
 
-    public ResponseEntity createNewGuest(Guest guest){
-        try{
+    public Guest create(Guest guest) throws Exception{
+
+        try {
             guest.setId(null);
             guestRepository.save(guest);
-            return ResponseEntity.status(HttpStatus.OK).build();}
-        catch(Exception ex){
-            return ResponseEntity.badRequest().body(ex.getMessage());
+            return guestRepository.save(guest);
+        }catch(Exception ex){
+            throw new Exception("Bad input");
         }
     }
 
-    public ResponseEntity <List<Guest>> getAllGuests() {
+    public Guest updateGuest(Long id, Guest updatedGuest) throws Exception{
+
+        if(!guestRepository.existsById(id)) {
+            throw new Exception("Insert an existing Id");
+        }
+        return guestRepository.save(updatedGuest);
+    }
+
+    public List<Guest> getAllGuests() throws Exception{
 
         List<Guest> allGuestsList = guestRepository.findAll();
-
-        if(allGuestsList != null) {
-            return new ResponseEntity(allGuestsList, HttpStatus.OK);
+        if(allGuestsList.isEmpty()) {
+            throw new Exception("The request list is empty");
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return allGuestsList;
     }
 
-    public ResponseEntity <Guest> getGuestById(Long id) {
-        try{
+    public Optional<Guest> getGuestById(Long id) throws Exception{
+        try {
             Optional<Guest> guest = guestRepository.findById(id);
-            return new ResponseEntity<>(guest.get(),HttpStatus.OK);}
-        catch(Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return guest;
+        }catch(Exception ex){
+            throw new Exception("Id not found ");
         }
     }
 
-    public ResponseEntity <Optional<Guest>> getGuestByNickname(String nickname) {
+    public Optional<Guest> getGuestByNickname(String nickname) throws Exception{
         try {
             Optional<Guest> guest = guestRepository.findByNickname(nickname);
-            return new ResponseEntity<>(guest,HttpStatus.OK);
+            return guest;
         }catch(Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("Nickname not found ");
         }
     }
 
-    public ResponseEntity updateGuest(Long id, Guest updatedGuest) {
-        if(!guestRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    public String deleteGuestById(Long id) throws Exception{
+
+        try{
+            if(guestRepository.existsById(id)){
+                guestRepository.deleteById(id);
+            }
+        }catch(Exception ex){
+            throw new Exception("Id not found");
         }
-            guestRepository.save(updatedGuest);
-            return ResponseEntity.status(HttpStatus.OK).build();
+        return "Bad input";
     }
 
-    public ResponseEntity deleteGuestById(Long id) {
-        if(id == null){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public String deleteGuestByNickname(String nickname) throws Exception{
+
+        try{
+            if(guestRepository.existsByNickname(nickname)){
+                guestRepository.deleteByNickname(nickname);
+            }
+        }catch(Exception ex){
+            throw new Exception("Id not found");
         }
-        guestRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return "Bad input";
     }
 
-    public ResponseEntity deleteGuestByNickname(String nickname){
-        if(nickname == null){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        guestRepository.deleteByNickname(nickname);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 
-    public ResponseEntity deleteAllGuests(){
-        guestRepository.deleteAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public String deleteAllGuests() throws Exception{
+
+        try{
+            guestRepository.deleteAll();
+        }catch(Exception ex){
+            throw new Exception("Can not delete all");
+        }
+        return "Bad input";
     }
 }

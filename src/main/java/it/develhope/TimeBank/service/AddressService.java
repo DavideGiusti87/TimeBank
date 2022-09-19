@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,52 +16,56 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    public ResponseEntity<Object> create(Address address){
+    public Address create(Address address) throws Exception {
         try{
             address.setId(null);
-            addressRepository.save(address);
-            return ResponseEntity.status(HttpStatus.OK).build();}
-        catch(Exception ex){
-            return ResponseEntity.badRequest().body(ex.getMessage());
+            return addressRepository.save(address);
+        }catch(Exception ex){
+            throw new Exception("Bad input");
         }
     }
+    public Address update(Long id, Address address) throws Exception{
 
-    public ResponseEntity<List<Address>> getAll(){
+        if(!addressRepository.existsById(id)){
+            throw new Exception("Insert an existing Id");
+        }
+        return addressRepository.save(address) ;
+    }
+    public List<Address> getAll() throws Exception{
+
         List<Address>address = addressRepository.findAll();
-        if (!address.isEmpty()){
-            return new ResponseEntity<List<Address>>(address, HttpStatus.OK);
+        if (address.isEmpty()){
+            throw new Exception("The request list is empty");
         }else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return address;
         }
 
     }
-
-    public ResponseEntity<Address> getSingle(Long id){
-        try{
-            Optional <Address> address = addressRepository.findById(id);
-            return new ResponseEntity<>(address.get(),HttpStatus.OK);
-        }
-        catch(Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    public Optional<Address> getById(Long id) throws Exception {
+        try {
+            Optional<Address> address = addressRepository.findById(id);
+            return address;
+        } catch (Exception ex){
+            throw new Exception("Id not found ");
         }
     }
-    public ResponseEntity<Address> update(Long id, Address address){
-        if(!addressRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        addressRepository.save(address);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 
-    public ResponseEntity<Object> deleteSingle(Long id){
+    public String deleteAddressById(Long id) throws Exception{
+
         if(id == null){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            throw new Exception("Id not found");
         }
         addressRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return "The address with Id " +id +" got deleted";
     }
-    public ResponseEntity<Object> deleteAll(){
-        addressRepository.deleteAll();
-        return ResponseEntity.status(HttpStatus.OK).build();
+
+    public String deleteAll() throws Exception{
+
+        try {
+            addressRepository.deleteAll();
+            return "All addresses got deleted";
+        }catch(Exception ex){
+            throw new Exception("Can not delete All");
+        }
     }
 }

@@ -11,5 +11,8 @@ import java.util.Optional;
 public interface GuestRepository extends JpaRepository <Guest,Long> {
 
     Optional <Guest> findByNickname(String nickname);
+
     void deleteByNickname(String nickname);
+
+    boolean existsByNickname(String nickname);
 }

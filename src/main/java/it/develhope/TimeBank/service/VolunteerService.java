@@ -1,7 +1,6 @@
 package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.entities.Skill;
-import it.develhope.TimeBank.entities.User;
 import it.develhope.TimeBank.entities.Volunteer;
 import it.develhope.TimeBank.repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,25 +17,21 @@ public class VolunteerService {
     @Autowired
     private VolunteerRepository volunteerRepository;
 
-    public ResponseEntity<List<Volunteer>> getAllVolunteers() {
-        try{
-            List<Volunteer> allVolunteers = volunteerRepository.findAll();
-            return new ResponseEntity<>(allVolunteers, HttpStatus.OK);
-        }catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public List<Volunteer> getAllVolunteers() throws Exception{
 
+        List<Volunteer> allVolunteers = volunteerRepository.findAll();
+        if(allVolunteers.isEmpty()) {
+            throw new Exception("The Volunteer list is empty");}
+        return allVolunteers;
     }
 
-    public ResponseEntity<Volunteer> getVolunteerBySkill(Skill skill) {
+    public Optional<Volunteer> getVolunteerBySkill(Skill skill) throws Exception {
         try{
             Optional<Volunteer> volunteer = volunteerRepository.findBySkill(skill);
-            return new ResponseEntity<>(volunteer.get(), HttpStatus.OK);
+            return volunteer;
         }
         catch(Exception ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new Exception("The Volunteer skill not found ");
         }
-
     }
-
 }

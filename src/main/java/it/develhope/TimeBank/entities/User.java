@@ -27,11 +27,6 @@ public class User extends Person {
         this.requests = requests;
     }
 
-    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests) {
-        super(id, name, surname, username, telephoneNumber, email, address, area);
-        this.password = password;
-        this.requests = requests;
-    }
 
     public String getPassword() {
         return password;

@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "volunteer")
-public class Volunteer extends User {
+public class Volunteer extends Person {
 
 
     @OneToMany(mappedBy = "volunteer")
@@ -24,18 +24,6 @@ public class Volunteer extends User {
     }
 
     public Volunteer(List<Skill> skill, boolean isAdmin) {
-        this.skill = skill;
-        this.isAdmin = isAdmin;
-    }
-
-    public Volunteer(String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
-        super(password, requests);
-        this.skill = skill;
-        this.isAdmin = isAdmin;
-    }
-
-    public Volunteer(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, String password, Set<Request> requests, List<Skill> skill, boolean isAdmin) {
-        super(id, name, surname, username, telephoneNumber, email, address, area, password, requests);
         this.skill = skill;
         this.isAdmin = isAdmin;
     }

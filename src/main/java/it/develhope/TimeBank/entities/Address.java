@@ -1,12 +1,12 @@
 package it.develhope.TimeBank.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -26,6 +26,15 @@ public class Address {
     private Set<Guest> guest;
     
 
+    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    private Set<User> users;
+
+    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    private Set<Guest> guests;
+
+
     public Address() {
     }
 
@@ -37,7 +46,9 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Long getId() {return id;}
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) {
         this.id = id;

@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * This controller has to provide all the main operations we need on the User class.
  * The main operations we need are the CRUD (Create, Read, Update, Delete) operations.

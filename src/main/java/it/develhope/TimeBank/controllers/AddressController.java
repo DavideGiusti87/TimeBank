@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.controllers;
 
+import io.swagger.annotations.ApiOperation;
 import it.develhope.TimeBank.entities.Address;
 import it.develhope.TimeBank.repository.AddressRepository;
 import it.develhope.TimeBank.service.AddressService;
@@ -10,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/address")
@@ -25,6 +25,7 @@ public class AddressController {
     private static Logger logger = LoggerFactory.getLogger(AddressController.class);
 
     @PostMapping("/create")
+    @ApiOperation(value = "create", notes = "create an address")
     public ResponseEntity createAddress(@RequestBody Address address){
         try {
             logger.info("Create an address");
@@ -36,6 +37,7 @@ public class AddressController {
     }
 
     @PutMapping("/{username}")
+    @ApiOperation(value = "username", notes = "update a user")
     public ResponseEntity update(@PathVariable Long id, @RequestBody Address address){
         try {
             logger.info("Update address info");
@@ -47,6 +49,7 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "id", notes = "get a single address")
     public ResponseEntity getSingleAddress(@PathVariable Long id){
         try {
             logger.info("Getting a single address");
@@ -57,6 +60,7 @@ public class AddressController {
         }
     }
     @GetMapping("/fetchAll")
+    @ApiOperation(value = "fetchAll", notes = "get all address")
     public ResponseEntity getAllAddress(){
         try {
             logger.info("Getting all address");
@@ -68,6 +72,7 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation(value = "id", notes = "delete an address")
     public ResponseEntity deleteBySingleId(@PathVariable Long id){
             try {
                 logger.info("delete a single address");
@@ -79,6 +84,7 @@ public class AddressController {
         }
 
     @DeleteMapping("/deleteAll")
+    @ApiOperation(value = "deleteAll", notes = "delete all address")
     public ResponseEntity deleteAll(){
         try {
             logger.info("delete all address");

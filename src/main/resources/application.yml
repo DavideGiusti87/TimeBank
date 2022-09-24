@@ -4,9 +4,9 @@ spring:
       matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/devdb
-    username: root
-    password: Password123.
+    url: jdbc:mysql://localhost:3306/timebank
+    username: developer
+    password: abc123
   jpa:
     database: mysql
     show-sql: true

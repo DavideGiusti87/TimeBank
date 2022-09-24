@@ -2,10 +2,9 @@ package it.develhope.TimeBank.entities;
 
 
 import it.develhope.TimeBank.entities.request.Request;
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity

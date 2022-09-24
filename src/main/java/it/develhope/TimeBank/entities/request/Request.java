@@ -2,8 +2,8 @@ package it.develhope.TimeBank.entities.request;
 
 import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.entities.User;
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Request {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")

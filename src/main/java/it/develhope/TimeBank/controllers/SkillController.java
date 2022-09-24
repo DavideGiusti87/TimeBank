@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.controllers;
 
+import io.swagger.annotations.ApiOperation;
 import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.service.SkillsService;
 import org.slf4j.Logger;
@@ -20,7 +21,9 @@ public class SkillController {
     private SkillsService skillsService;
 
     private static final Logger logger = LoggerFactory.getLogger(SkillController.class);
+
     @PostMapping("/create")
+    @ApiOperation(value = "create", notes = "create a skill")
     public ResponseEntity create(@RequestBody Skill skill){
         try {
             logger.info("Create a skill");
@@ -32,6 +35,7 @@ public class SkillController {
     }
 
     @PutMapping("/{id}")
+    @ApiOperation(value = "id", notes = "update a skill")
     public ResponseEntity update(@PathVariable Long id, @RequestBody @NonNull Skill skill) throws Exception{
 
         try {
@@ -44,6 +48,7 @@ public class SkillController {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "id", notes = "get a single skill")
     public ResponseEntity getASingleSkills(@PathVariable Long id){
         try {
             logger.info("Get a single skill");
@@ -55,6 +60,7 @@ public class SkillController {
     }
 
     @GetMapping("/fetchAll")
+    @ApiOperation(value = "fetchAll", notes = "get all skills")
     public ResponseEntity getAllSkills(){
 
         try {
@@ -67,6 +73,7 @@ public class SkillController {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation(value = "delete", notes = "delete a single skill")
     public ResponseEntity delete(@PathVariable Long id){
 
         try {
@@ -79,6 +86,7 @@ public class SkillController {
     }
 
     @DeleteMapping("/deleteAll")
+    @ApiOperation(value = "deleteAll", notes = "delete all skills")
     public ResponseEntity deleteAll(){
 
         try {

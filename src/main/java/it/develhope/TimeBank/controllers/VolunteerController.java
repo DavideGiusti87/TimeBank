@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.controllers;
 
+import io.swagger.annotations.ApiOperation;
 import it.develhope.TimeBank.entities.Skill;
 import it.develhope.TimeBank.repository.VolunteerRepository;
 import it.develhope.TimeBank.service.VolunteerService;
@@ -25,6 +26,7 @@ public class VolunteerController {
     private static final Logger logger = LoggerFactory.getLogger(VolunteerController.class);
 
     @GetMapping("/fetchAll")
+    @ApiOperation(value = "fetchAll", notes = "get all users")
     public ResponseEntity getAllUsers() {
 
         try {
@@ -37,6 +39,7 @@ public class VolunteerController {
     }
 
     @GetMapping("/{skill}")
+    @ApiOperation(value = "skill", notes = "get volunteer by skill")
     public ResponseEntity getVolunteerBySkill(@PathVariable Skill skill) {
 
         try {

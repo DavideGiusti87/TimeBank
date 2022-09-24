@@ -1,6 +1,6 @@
 package it.develhope.TimeBank.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @MappedSuperclass
 public class Person {

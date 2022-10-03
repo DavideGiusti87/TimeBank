@@ -1,93 +1,87 @@
 package it.develhope.TimeBank.service;
 
-import it.develhope.TimeBank.entities.Skill;
-import it.develhope.TimeBank.entities.request.Request;
+import it.develhope.TimeBank.exceptions.MissingAreaException;
+import it.develhope.TimeBank.model.DTO.RequestDTO;
+import it.develhope.TimeBank.model.entities.Area;
+import it.develhope.TimeBank.model.entities.Request;
+import it.develhope.TimeBank.model.entities.Skill;
 import it.develhope.TimeBank.repository.RequestRepository;
+import it.develhope.TimeBank.repository.SkillRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class RequestService {
 
+    private static Logger logger = LoggerFactory.getLogger(RequestService.class);
+
     @Autowired
-    private RequestRepository requestRepository;
+    RequestRepository requestRepository;
 
-    public Request create(Request request) throws Exception {
-        try {
-            request.setId(null);
-            return requestRepository.save(request);
-        } catch (Exception ex) {
-            throw new Exception("Bad input");
+    @Autowired
+    AreaService areaService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    SkillRepository skillRepository;
+
+    public Request createNewRequest(RequestDTO newRequestDTO) throws MissingAreaException {
+        Request newRequest = new Request();
+
+        // get the area from the database if already exists, create a new one otherwise
+        if (newRequestDTO.getArea() == null) {
+            throw new MissingAreaException();
         }
-
-    }
-
-    public Request update(Long id, Request request) throws Exception {
-
-        if (!requestRepository.existsById(id)) {
-            throw new Exception("Insert an existing Id");
-        }
-        return requestRepository.save(request);
-    }
-
-
-    public List<Request> getAll() throws Exception {
-
-        List<Request> allRequests = requestRepository.findAll();
-        if (allRequests.isEmpty()) {
-            throw new Exception("The request list is empty");
-        }
-        return allRequests;
-    }
-
-    public Optional<Request> getById(Long id) throws Exception {
-        try {
-            Optional<Request> request = requestRepository.findById(id);
-            return request;
-        } catch (Exception ex) {
-            throw new Exception("Id not found ");
-        }
-    }
-
-    public Optional<Request> getBySkill(Skill skill) throws Exception {
-        try {
-            Optional<Request> request = requestRepository.findBySkill(skill);
-            return request;
-        } catch (Exception ex) {
-            throw new Exception("Skill not found");
-        }
-    }
-
-    public Request deleteByUsername(String username) throws Exception {
-        try {
-            return requestRepository.deleteByUsername(username);
-        } catch (Exception ex) {
-            throw new Exception("Username not found");
-        }
-    }
-
-    public String deleteById(Long id) throws Exception {
-
-        try {
-            if (requestRepository.existsById(id)) {
-                requestRepository.deleteById(id);
-                return "The request with id " + id + " has been deleted.";
+        else {
+            Optional<Area> matchingArea = areaService
+                    .getAreaByPerfectMatch(newRequestDTO.getArea());
+            if (matchingArea.isPresent()) {
+                newRequest.setArea(matchingArea.get());
             }
-        } catch (Exception ex) {
-            throw new Exception("Id not found");
+            else {
+                newRequest.setArea(areaService.createNewArea(newRequestDTO.getArea()));
+            }
         }
-        return null;
+
+        // set user: from db if requested, anonymous otherwise
+        if (newRequestDTO.isUseDefaultUserContactInformation()) {
+            newRequest.setAnonynous(false);
+            // TODO when login is implemented, get user info from JWT
+            logger.warn("Users are not implemented yet!");
+        }
+        else {
+            newRequest.setUsername(newRequestDTO.getUsername());
+            newRequest.setEmail(newRequestDTO.getEmail());
+            newRequest.setPhoneNumber(newRequest.getPhoneNumber());
+            // there is a singleton anonymous user -> check UserService class, it's nice
+            newRequest.setRecipientUser(userService.getAnonymousUser());
+        }
+
+        newRequest.setDescription(newRequestDTO.getDescription());
+
+        List<Skill> requiredSkills = new ArrayList<>();
+        for (String skillString : newRequestDTO.getRequiredSkills()) {
+            // TODO do this with a service
+            Optional<Skill> skill = skillRepository.findByName(skillString);
+                if (skill.isPresent()) {
+                    requiredSkills.add(skill.get());
+                }
+                else {
+                    // TODO decide what to do
+                    logger.warn("TODO Decide what to do with new skills");
+                }
+        }
+        newRequest.setRequiredSkills(requiredSkills);
+
+        return requestRepository.save(newRequest);
     }
 
-    public String deleteAll() throws Exception {
-        try {
-            requestRepository.deleteAll();
-            return "All requests have been deleted.";
-        } catch (Exception ex) {
-            throw new Exception(ex.getMessage());
-        }
-    }
 }

@@ -1,19 +1,10 @@
 package it.develhope.TimeBank.repository;
 
-import it.develhope.TimeBank.entities.Skill;
-import it.develhope.TimeBank.entities.request.Request;
+
+import it.develhope.TimeBank.model.entities.Request;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public interface RequestRepository extends JpaRepository<Request, Long> {
-
-
-    Request deleteByUsername(String username);
-
-    Optional<Request> findBySkill(Skill skill);
-
-    /*Optional<Request> findBySkill(Set<Skill> skill);*/
 }

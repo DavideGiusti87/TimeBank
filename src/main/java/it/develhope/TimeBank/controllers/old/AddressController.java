@@ -1,7 +1,7 @@
-package it.develhope.TimeBank.controllers;
+/*package it.develhope.TimeBank.controllers.old;
 
 import io.swagger.annotations.ApiOperation;
-import it.develhope.TimeBank.entities.Address;
+import it.develhope.TimeBank.model.entities.Address;
 import it.develhope.TimeBank.repository.AddressRepository;
 import it.develhope.TimeBank.service.AddressService;
 import org.slf4j.Logger;
@@ -95,3 +95,4 @@ public class AddressController {
         }
     }
 }
+*/

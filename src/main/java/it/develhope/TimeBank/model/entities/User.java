@@ -1,32 +1,39 @@
-package it.develhope.TimeBank.entities;
+package it.develhope.TimeBank.model.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
-@MappedSuperclass
-public class Person {
+@Entity
+@Table(name="users")
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String surname;
+    //@Column(nullable = false)
     private String username;
-    @Column(unique = true, nullable = false)
+    //@Column(unique = true, nullable = false)
     private String telephoneNumber;
-    @Column(unique = true, nullable = false)
+    //@Column(unique = true, nullable = false)
     private String email;
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
-    @Enumerated
+    @ManyToOne
     private Area area;
+    private List<Skill> skills;
+    private List<Request> takenOverRequests;
+    private List<Request> publishedRequests;
 
-    public Person() {
+
+    public User() {
     }
 
-    public Person(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area) {
+    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -35,6 +42,9 @@ public class Person {
         this.email = email;
         this.address = address;
         this.area = area;
+        this.skills = skills;
+        this.takenOverRequests = takenOverRequests;
+        this.publishedRequests = publishedRequests;
     }
 
     public Long getId() {
@@ -99,5 +109,29 @@ public class Person {
 
     public void setArea(Area area) {
         this.area = area;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public List<Request> getTakenOverRequests() {
+        return takenOverRequests;
+    }
+
+    public void setTakenOverRequests(List<Request> takenOverRequests) {
+        this.takenOverRequests = takenOverRequests;
+    }
+
+    public List<Request> getPublishedRequests() {
+        return publishedRequests;
+    }
+
+    public void setPublishedRequests(List<Request> publishedRequests) {
+        this.publishedRequests = publishedRequests;
     }
 }

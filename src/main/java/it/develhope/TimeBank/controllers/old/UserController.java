@@ -1,7 +1,6 @@
-package it.develhope.TimeBank.controllers;
+/*package it.develhope.TimeBank.controllers.old;
 
 import io.swagger.annotations.ApiOperation;
-import it.develhope.TimeBank.entities.User;
 import it.develhope.TimeBank.repository.UserRepository;
 import it.develhope.TimeBank.service.UserService;
 import org.slf4j.Logger;
@@ -9,14 +8,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;*/
 
 /**
  * This controller has to provide all the main operations we need on the User class.
  * The main operations we need are the CRUD (Create, Read, Update, Delete) operations.
  */
 
-
+/*
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -31,7 +30,7 @@ public class UserController {
 
     @PostMapping("/create")
     @ApiOperation(value = "create", notes = "creation of a new user")
-    public ResponseEntity insertNewUser(@RequestBody User user){
+    public ResponseEntity insertNewUser(@RequestBody User_old user){
 
         try {
             logger.info("Insert a new User");
@@ -44,7 +43,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     @ApiOperation(value = "id", notes = "update user info by id")
-    public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User updateUser) {
+    public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User_old updateUser) {
 
         try {
             logger.info("Edit a User");
@@ -133,3 +132,4 @@ public class UserController {
         }
     }
 }
+*/

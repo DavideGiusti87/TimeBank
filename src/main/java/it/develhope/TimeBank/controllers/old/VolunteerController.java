@@ -1,7 +1,7 @@
-package it.develhope.TimeBank.controllers;
+/*package it.develhope.TimeBank.controllers.old;
 
 import io.swagger.annotations.ApiOperation;
-import it.develhope.TimeBank.entities.Skill;
+import it.develhope.TimeBank.model.entities.Skill;
 import it.develhope.TimeBank.repository.VolunteerRepository;
 import it.develhope.TimeBank.service.VolunteerService;
 import org.slf4j.Logger;
@@ -51,3 +51,4 @@ public class VolunteerController {
         }
     }
 }
+*/

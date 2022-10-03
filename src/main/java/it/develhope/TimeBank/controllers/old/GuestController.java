@@ -1,7 +1,6 @@
-package it.develhope.TimeBank.controllers;
+/*package it.develhope.TimeBank.controllers.old;
 
 import io.swagger.annotations.ApiOperation;
-import it.develhope.TimeBank.entities.Guest;
 import it.develhope.TimeBank.repository.GuestRepository;
 import it.develhope.TimeBank.service.GuestService;
 import org.slf4j.Logger;
@@ -119,3 +118,4 @@ public class GuestController {
         }
     }
 }
+*/

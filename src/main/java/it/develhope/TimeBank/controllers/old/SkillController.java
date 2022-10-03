@@ -1,7 +1,7 @@
-package it.develhope.TimeBank.controllers;
+/*package it.develhope.TimeBank.controllers.old;
 
 import io.swagger.annotations.ApiOperation;
-import it.develhope.TimeBank.entities.Skill;
+import it.develhope.TimeBank.model.entities.Skill;
 import it.develhope.TimeBank.service.SkillsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/skill")
@@ -98,3 +96,4 @@ public class SkillController {
         }
     }
 }
+*/

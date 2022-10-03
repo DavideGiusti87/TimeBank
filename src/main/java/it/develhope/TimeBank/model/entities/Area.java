@@ -1,6 +1,7 @@
 package it.develhope.TimeBank.model.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="areas")
@@ -12,6 +13,12 @@ public class Area extends BaseEntity {
     private String region;
     private String town;
     private String neighborhood;
+
+    @OneToMany(mappedBy = "area")
+    private List<User> usersInThisArea;
+
+    @OneToMany(mappedBy = "area")
+    private List<Request> requestsInThisArea;
 
     public Area() {
     }

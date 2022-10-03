@@ -22,7 +22,7 @@ public class Request extends BaseEntity {
     private String username;
     private String phoneNumber;
     private String email;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="area_id")
     private Area area;
     @ManyToMany

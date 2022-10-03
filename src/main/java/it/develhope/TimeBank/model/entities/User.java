@@ -24,9 +24,13 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
     @ManyToOne
+    @JoinColumn(name = "area_id")
     private Area area;
+    @ManyToMany
     private List<Skill> skills;
+    @OneToMany(mappedBy = "volunteer")
     private List<Request> takenOverRequests;
+    @OneToMany(mappedBy = "recipientUser")
     private List<Request> publishedRequests;
 
 

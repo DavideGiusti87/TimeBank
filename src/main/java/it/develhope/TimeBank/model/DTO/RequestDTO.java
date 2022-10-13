@@ -9,7 +9,7 @@ import it.develhope.TimeBank.model.entities.Area;
  * - area has to be validated into an appropriate enume
  * - requiredSkills has to be transformed into a List<Skill>
  */
-public class RequestDTO {
+public class    RequestDTO {
 
     // CONTACT INFO
     /*

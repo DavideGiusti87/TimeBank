@@ -1,6 +1,7 @@
 package it.develhope.TimeBank.model.entities;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,13 @@ public class User {
     private String telephoneNumber;
     //@Column(unique = true, nullable = false)
     private String email;
+    //@Column(length = 36)
+    private String activationCode;
+    //@Column(length = 36)
+    private String passwordResetCode;
+
+    private LocalDateTime jwtCreatedOn;
+
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
@@ -37,13 +45,16 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests) {
+    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
+        this.activationCode = activationCode;
+        this.passwordResetCode = passwordResetCode;
+        this.jwtCreatedOn = jwtCreatedOn;
         this.address = address;
         this.area = area;
         this.skills = skills;
@@ -97,6 +108,30 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public String getPasswordResetCode() {
+        return passwordResetCode;
+    }
+
+    public void setPasswordResetCode(String passwordResetCode) {
+        this.passwordResetCode = passwordResetCode;
+    }
+
+    public LocalDateTime getJwtCreatedOn() {
+        return jwtCreatedOn;
+    }
+
+    public void setJwtCreatedOn(LocalDateTime jwtCreatedOn) {
+        this.jwtCreatedOn = jwtCreatedOn;
     }
 
     public Address getAddress() {

@@ -1,5 +1,6 @@
 package it.develhope.TimeBank;
 
+import it.develhope.TimeBank.utils.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -27,7 +28,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/requests/**").hasAnyRole("ROLE_"+Roles.REGISTERED)
+                .antMatchers("/requests/**").hasAnyRole("ROLE_"+ Roles.REGISTERED)
                 .anyRequest().authenticated();
 
         http.csrf().disable();

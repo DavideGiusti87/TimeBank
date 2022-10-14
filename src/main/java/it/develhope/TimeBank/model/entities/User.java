@@ -18,6 +18,8 @@ public class User {
     //@Column(nullable = false)
     private String username;
     //@Column(unique = true, nullable = false)
+
+    private String password;
     private String telephoneNumber;
     //@Column(unique = true, nullable = false)
     private String email;
@@ -27,6 +29,8 @@ public class User {
     private String passwordResetCode;
 
     private LocalDateTime jwtCreatedOn;
+
+    private boolean isActive;
 
     @ManyToOne
     @JoinColumn(name = "address_id")
@@ -45,16 +49,18 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String username, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests) {
+    public User(Long id, String name, String surname, String username, String password, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, boolean isActive, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
+        this.password = password;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.activationCode = activationCode;
         this.passwordResetCode = passwordResetCode;
         this.jwtCreatedOn = jwtCreatedOn;
+        this.isActive = isActive;
         this.address = address;
         this.area = area;
         this.skills = skills;
@@ -92,6 +98,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getTelephoneNumber() {
@@ -132,6 +146,14 @@ public class User {
 
     public void setJwtCreatedOn(LocalDateTime jwtCreatedOn) {
         this.jwtCreatedOn = jwtCreatedOn;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public Address getAddress() {

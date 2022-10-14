@@ -3,6 +3,7 @@ package it.develhope.TimeBank.model.entities;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -45,11 +46,20 @@ public class User {
     @OneToMany(mappedBy = "recipientUser")
     private List<Request> publishedRequests;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLES",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID") })
+    private Set<Role> roles;
+
 
     public User() {
     }
 
-    public User(Long id, String name, String surname, String username, String password, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, boolean isActive, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests) {
+    public User(Long id, String name, String surname, String username, String password, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, boolean isActive, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -66,6 +76,7 @@ public class User {
         this.skills = skills;
         this.takenOverRequests = takenOverRequests;
         this.publishedRequests = publishedRequests;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -194,5 +205,13 @@ public class User {
 
     public void setPublishedRequests(List<Request> publishedRequests) {
         this.publishedRequests = publishedRequests;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

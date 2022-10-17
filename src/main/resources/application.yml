@@ -5,15 +5,25 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/timebank
-    username:
-    password:
+    username: root
+    password: 1234
   jpa:
     database: mysql
     show-sql: true
     open-in-view: 'false'
-
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: nome@gmail.com
+    password: xxxxxxxxxxxxxxxxxxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
   logging:
      level:

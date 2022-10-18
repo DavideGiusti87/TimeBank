@@ -23,7 +23,7 @@ public class SignupController {
     private static Logger logger = LoggerFactory.getLogger(SignupController.class);
 
     @PostMapping("/signup")
-    public ResponseEntity signup(@RequestBody SignupDTO signupDTO) throws Exception {
+    public ResponseEntity signup(@RequestBody SignupDTO signupDTO) /*throws Exception */{
         try {
             logger.info("Registration successful!");
             return ResponseEntity.status(HttpStatus.OK).body(signupService.signup(signupDTO));

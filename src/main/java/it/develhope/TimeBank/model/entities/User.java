@@ -46,13 +46,19 @@ public class User {
     @OneToMany(mappedBy = "recipientUser")
     private List<Request> publishedRequests;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLES",
+    /*
+    Ogni volta che definisco una relazione devo definirla da entrambe le parti:
+    - devo dire agli utenti che hanno una lista di ruoli
+    - devo dire ai ruoli che hanno una lista di utenti
+    */
+
+    @ManyToMany/*(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "roles_user",
             joinColumns = {
                     @JoinColumn(name = "USER_ID")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID") })
+                    @JoinColumn(name = "ROLE_ID") })*/
     private Set<Role> roles;
 
 

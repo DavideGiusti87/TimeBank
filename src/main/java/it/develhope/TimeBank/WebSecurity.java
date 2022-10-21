@@ -15,12 +15,25 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JwtTokenFilter jwtTokenFilter;
+    // @Autowired
+    // private JwtTokenFilter jwtTokenFilter;
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
+
+    /*
+
+    POSTMAN --> (request) --> filtri --> interceptor --> CONTROLLER
+
+    JwtTokenFilter intercetta la richiesta prima che entri nel sistema; al suo interno trova
+    un JWT (Json Web Tojken); lo decodifica e dentro ci trova il nome utente e tutte le informazioni
+    per capire se l'utente è autorizzato. Se è autorizzato passa la richiesta al controller, altrimenti la blocca.
+
+     */
+
 
     @Override
     protected void configure (HttpSecurity http) throws Exception {
@@ -34,7 +47,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().frameOptions().disable();
 
-        http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        // http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 }

@@ -26,8 +26,8 @@ public class SignupService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private MailNotificationService mailNotificationService;
+    // @Autowired
+    // private MailNotificationService mailNotificationService;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -36,7 +36,7 @@ public class SignupService {
         return this.signup(signupDTO, Roles.REGISTERED);
     }
 
-    public User signup(SignupDTO signupDTO, String role) throws Exception{
+    public User signup(SignupDTO signupDTO, String role) throws Exception {
         User userFromDB = userRepository.findByEmail(signupDTO.getEmail());
         if (userFromDB != null)throw new Exception("User already exist");
         User user = new User();
@@ -51,7 +51,7 @@ public class SignupService {
         if (!userRole.isPresent())throw new Exception("Role not found");
         roles.add(userRole.get());
         user.setRoles(roles);
-        mailNotificationService.sendActivationMail(user);
+        // mailNotificationService.sendActivationMail(user);
         return userRepository.save(user);
     }
 

@@ -29,6 +29,7 @@ public class SignupController {
             return ResponseEntity.status(HttpStatus.OK).body(signupService.signup(signupDTO));
         }catch (Exception ex){
             logger.error(ex.getMessage());
+            ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }

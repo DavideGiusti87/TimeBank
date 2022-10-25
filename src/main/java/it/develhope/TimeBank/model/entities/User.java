@@ -34,9 +34,6 @@ public class User {
     private boolean isActive;
 
     @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-    @ManyToOne
     @JoinColumn(name = "area_id")
     private Area area;
     @ManyToMany
@@ -65,7 +62,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String username, String password, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, boolean isActive, Address address, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests, Set<Role> roles) {
+    public User(Long id, String name, String surname, String username, String password, String telephoneNumber, String email, String activationCode, String passwordResetCode, LocalDateTime jwtCreatedOn, boolean isActive, Area area, List<Skill> skills, List<Request> takenOverRequests, List<Request> publishedRequests, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -77,7 +74,6 @@ public class User {
         this.passwordResetCode = passwordResetCode;
         this.jwtCreatedOn = jwtCreatedOn;
         this.isActive = isActive;
-        this.address = address;
         this.area = area;
         this.skills = skills;
         this.takenOverRequests = takenOverRequests;
@@ -171,14 +167,6 @@ public class User {
 
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public Area getArea() {

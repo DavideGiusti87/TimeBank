@@ -33,7 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             // auth
             "/auth/**",
             // debug
-            "/skill/**"
+            "/skill/**",
+            "/areas/**",
+            "/requests/createAnonymousRequest"
     };
 
 
@@ -54,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(AUTH_LIST).permitAll()
-                .antMatchers("/requests/**").hasAnyRole("ROLE_"+ Roles.REGISTERED)
+                .antMatchers("/requests/createNew").hasAnyRole("ROLE_"+ Roles.REGISTERED)
                 .anyRequest().authenticated();
 
         http.csrf().disable();

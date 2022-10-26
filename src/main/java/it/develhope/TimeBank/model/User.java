@@ -39,6 +39,7 @@ public class User {
     @JoinColumn(name = "area_id")
     private Area area;
     @ManyToMany
+    @JsonIgnore
     private List<Skill> skills;
     @OneToMany(mappedBy = "volunteer")
     @JsonIgnore

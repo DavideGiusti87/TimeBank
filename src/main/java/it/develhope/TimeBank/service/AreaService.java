@@ -1,6 +1,7 @@
 package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.exceptions.DirtyDataFoundException;
+import it.develhope.TimeBank.exceptions.MissingAreaException;
 import it.develhope.TimeBank.model.Area;
 import it.develhope.TimeBank.repository.AreaRepository;
 import org.slf4j.Logger;
@@ -19,6 +20,16 @@ public class AreaService {
 
     @Autowired
     AreaRepository areaRepository;
+
+
+    public Area getAreaById(Long areaId) throws MissingAreaException {
+        Optional<Area> optionalArea = areaRepository.findById(areaId);
+        if (optionalArea.isPresent()) {
+            return optionalArea.get();
+        }
+        throw new MissingAreaException();
+
+    }
 
     public Optional<Area> getAreaByPerfectMatch(Area area) {
         List<Area> matchingAreas = areaRepository.findByRegionAndTownAndNeighborhood(

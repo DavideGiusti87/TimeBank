@@ -1,10 +1,7 @@
 package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.exceptions.MissingAreaException;
-import it.develhope.TimeBank.model.RequestDTO;
-import it.develhope.TimeBank.model.Area;
-import it.develhope.TimeBank.model.Request;
-import it.develhope.TimeBank.model.Skill;
+import it.develhope.TimeBank.model.*;
 import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.repository.SkillRepository;
 import org.slf4j.Logger;
@@ -33,54 +30,47 @@ public class RequestService {
     @Autowired
     SkillRepository skillRepository;
 
-    public Request createNewRequest(RequestDTO newRequestDTO) throws MissingAreaException {
+    @Autowired
+    SkillService skillService;
+
+    /*
+    Ricevo in ingresso una AnonymousRequestDTO.
+    La uso per costruire una entity Request, la inserisco nel DB e la restituisco all'utente
+    */
+    public Request createAnonymousRequest(AnonymousRequestDTO request) throws Exception {
+        Request newRequest = new Request();
+        newRequest.setAnonymous(true);
+        newRequest.setTitle(request.getTitle());
+        newRequest.setDescription((request.getDescription()));
+        newRequest.setUsername(request.getContactName());
+        newRequest.setPhoneNumber(request.getTelephoneNumber());
+        newRequest.setEmail(request.getEmail());
+        // non c'è un recipientUser perché la richiesta è anonima
+        newRequest.setArea(areaService.getAreaById(request.getAreaId()));
+        List<Skill> skillsList = new ArrayList<>();
+        for (Long skillId : request.getSkillIds()) {
+            skillsList.add(skillService.getASingleSkill(skillId));
+        }
+        newRequest.setRequiredSkills(skillsList);
+        return requestRepository.save(newRequest);
+    }
+
+    public Request createNewRequest(RequestDTO request, User user) throws Exception {
         Request newRequest = new Request();
 
-        // get the area from the database if already exists, create a new one otherwise
-        if (newRequestDTO.getArea() == null) {
-            throw new MissingAreaException();
+        newRequest.setAnonymous(false);
+        newRequest.setTitle(request.getTitle());
+        newRequest.setDescription((request.getDescription()));
+        newRequest.setUsername(user.getUsername());
+        newRequest.setPhoneNumber(user.getTelephoneNumber());
+        newRequest.setEmail(user.getEmail());
+        newRequest.setRecipientUser(user);
+        newRequest.setArea(areaService.getAreaById(request.getAreaId()));
+        List<Skill> skillsList = new ArrayList<>();
+        for (Long skillId : request.getSkillIds()) {
+            skillsList.add(skillService.getASingleSkill(skillId));
         }
-        else {
-            Optional<Area> matchingArea = areaService
-                    .getAreaByPerfectMatch(newRequestDTO.getArea());
-            if (matchingArea.isPresent()) {
-                newRequest.setArea(matchingArea.get());
-            }
-            else {
-                newRequest.setArea(areaService.createNewArea(newRequestDTO.getArea()));
-            }
-        }
-
-        // set user: from db if requested, anonymous otherwise
-        if (newRequestDTO.isUseDefaultUserContactInformation()) {
-            newRequest.setAnonynous(false);
-            // TODO when login is implemented, get user info from JWT
-            logger.warn("Users are not implemented yet!");
-        }
-        else {
-            newRequest.setUsername(newRequestDTO.getUsername());
-            newRequest.setEmail(newRequestDTO.getEmail());
-            newRequest.setPhoneNumber(newRequest.getPhoneNumber());
-            // there is a singleton anonymous user -> check UserService class, it's nice
-            newRequest.setRecipientUser(userService.getAnonymousUser());
-        }
-
-        newRequest.setDescription(newRequestDTO.getDescription());
-
-        List<Skill> requiredSkills = new ArrayList<>();
-        for (String skillString : newRequestDTO.getRequiredSkills()) {
-            // TODO do this with a service
-            Optional<Skill> skill = skillRepository.findByName(skillString);
-                if (skill.isPresent()) {
-                    requiredSkills.add(skill.get());
-                }
-                else {
-                    // TODO decide what to do
-                    logger.warn("TODO Decide what to do with new skills");
-                }
-        }
-        newRequest.setRequiredSkills(requiredSkills);
-
+        newRequest.setRequiredSkills(skillsList);
         return requestRepository.save(newRequest);
     }
 

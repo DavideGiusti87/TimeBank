@@ -10,9 +10,10 @@ public class Request extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String title;
     private String description;
 
-    private boolean isAnonynous;
+    private boolean isAnonymous;
     // user is null if the request is anonymous
     @ManyToOne
     @JoinColumn(name="recipient_user_id")
@@ -27,6 +28,7 @@ public class Request extends BaseEntity {
     private Area area;
     @ManyToMany
     private List<Skill> requiredSkills;
+    // sempre null al momento della creazione della richiesta; viene valorizzato al momento della presa in carico
     @ManyToOne
     @JoinColumn(name="volunteer_id")
     private User volunteer;
@@ -34,9 +36,10 @@ public class Request extends BaseEntity {
     public Request() {
     }
 
-    public Request(String description, boolean isAnonynous, User recipientUser, String username, String phoneNumber, String email, Area area, List<Skill> requiredSkills, User volunteer) {
+    public Request(String description, String title, boolean isAnonymous, User recipientUser, String username, String phoneNumber, String email, Area area, List<Skill> requiredSkills, User volunteer) {
         this.description = description;
-        this.isAnonynous = isAnonynous;
+        this.title = title;
+        this.isAnonymous = isAnonymous;
         this.recipientUser = recipientUser;
         this.username = username;
         this.phoneNumber = phoneNumber;
@@ -54,12 +57,20 @@ public class Request extends BaseEntity {
         this.description = description;
     }
 
-    public boolean isAnonynous() {
-        return isAnonynous;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setAnonynous(boolean anonynous) {
-        isAnonynous = anonynous;
+    public String getTitle() {
+        return this.title;
+    }
+
+    public boolean isAnonymous() {
+        return isAnonymous;
+    }
+
+    public void setAnonymous(boolean anonymous) {
+        isAnonymous = anonymous;
     }
 
     public User getRecipientUser() {

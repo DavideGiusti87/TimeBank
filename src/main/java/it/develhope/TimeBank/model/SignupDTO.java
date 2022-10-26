@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.model.DTO;
+package it.develhope.TimeBank.model;
 
 public class SignupDTO {
 

@@ -1,14 +1,12 @@
-package it.develhope.TimeBank.notification;
+package it.develhope.TimeBank.utils;
 
-import it.develhope.TimeBank.model.entities.User;
+import it.develhope.TimeBank.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
 @Service
 public class MailNotificationService {

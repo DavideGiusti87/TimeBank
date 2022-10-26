@@ -1,4 +1,6 @@
-package it.develhope.TimeBank.model.entities;
+package it.develhope.TimeBank.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,9 +15,14 @@ public class Role {
     private String name;
 
     @ManyToMany
+    @JsonIgnore
     private List<User> users;
 
     public Role() {
+    }
+
+    public Role(String name) {
+        this.name = name;
     }
 
     public Role(Long id, String name) {

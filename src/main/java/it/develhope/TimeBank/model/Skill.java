@@ -1,4 +1,6 @@
-package it.develhope.TimeBank.model.entities;
+package it.develhope.TimeBank.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,9 +18,11 @@ public class Skill extends BaseEntity {
     private String description;
 
     @ManyToMany
+    @JsonIgnore
     private List<User> users;
 
     @ManyToMany
+    @JsonIgnore
     private Set<Request> request;
 
     public Skill() {

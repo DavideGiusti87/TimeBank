@@ -1,6 +1,6 @@
 package it.develhope.TimeBank.utils;
 
-import it.develhope.TimeBank.model.entities.User;
+import it.develhope.TimeBank.model.User;
 import lombok.Data;
 
 import javax.persistence.ManyToOne;

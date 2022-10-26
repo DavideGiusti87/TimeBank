@@ -1,7 +1,7 @@
 /*package it.develhope.TimeBank.controllers.old;
 
 import io.swagger.annotations.ApiOperation;
-import it.develhope.TimeBank.model.entities.Skill;
+import it.develhope.TimeBank.model.Skill;
 import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.model.request.Request;
 import it.develhope.TimeBank.repository.UserRepository;

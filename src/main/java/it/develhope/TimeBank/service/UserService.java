@@ -1,6 +1,6 @@
 package it.develhope.TimeBank.service;
 
-import it.develhope.TimeBank.model.entities.User;
+import it.develhope.TimeBank.model.User;
 import it.develhope.TimeBank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

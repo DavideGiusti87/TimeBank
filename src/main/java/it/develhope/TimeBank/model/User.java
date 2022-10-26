@@ -1,4 +1,6 @@
-package it.develhope.TimeBank.model.entities;
+package it.develhope.TimeBank.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -39,8 +41,10 @@ public class User {
     @ManyToMany
     private List<Skill> skills;
     @OneToMany(mappedBy = "volunteer")
+    @JsonIgnore
     private List<Request> takenOverRequests;
     @OneToMany(mappedBy = "recipientUser")
+    @JsonIgnore
     private List<Request> publishedRequests;
 
     /*
@@ -49,13 +53,7 @@ public class User {
     - devo dire ai ruoli che hanno una lista di utenti
     */
 
-    @ManyToMany/*(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "roles_user",
-            joinColumns = {
-                    @JoinColumn(name = "USER_ID")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID") })*/
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Role> roles;
 
 

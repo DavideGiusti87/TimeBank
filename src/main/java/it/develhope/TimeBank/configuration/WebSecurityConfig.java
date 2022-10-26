@@ -1,4 +1,4 @@
-package it.develhope.TimeBank;
+package it.develhope.TimeBank.configuration;
 
 import it.develhope.TimeBank.utils.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
-public class WebSecurity extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtTokenFilter jwtTokenFilter;
@@ -31,7 +31,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
             "/v2/api-docs",
             "/webjars/**",
             // auth
-            "/auth/**"
+            "/auth/**",
+            // debug
+            "/skill/**"
     };
 
 

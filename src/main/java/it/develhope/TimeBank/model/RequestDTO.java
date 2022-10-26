@@ -1,6 +1,4 @@
-package it.develhope.TimeBank.model.DTO;
-
-import it.develhope.TimeBank.model.entities.Area;
+package it.develhope.TimeBank.model;
 
 /**
  * This class is used to submit a request to the system.

@@ -1,10 +1,10 @@
 package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.exceptions.MissingAreaException;
-import it.develhope.TimeBank.model.DTO.RequestDTO;
-import it.develhope.TimeBank.model.entities.Area;
-import it.develhope.TimeBank.model.entities.Request;
-import it.develhope.TimeBank.model.entities.Skill;
+import it.develhope.TimeBank.model.RequestDTO;
+import it.develhope.TimeBank.model.Area;
+import it.develhope.TimeBank.model.Request;
+import it.develhope.TimeBank.model.Skill;
 import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.repository.SkillRepository;
 import org.slf4j.Logger;

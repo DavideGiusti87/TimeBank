@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.model.entities;
+package it.develhope.TimeBank.model;
 
 import javax.persistence.*;
 import java.util.List;

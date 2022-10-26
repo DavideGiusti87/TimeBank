@@ -1,4 +1,4 @@
-package it.develhope.TimeBank.model.entities;
+package it.develhope.TimeBank.model;
 
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
@@ -9,6 +9,9 @@ public class BaseEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public BaseEntity() {
+        this.createdAt = LocalDateTime.now();
+    }
 
 
 

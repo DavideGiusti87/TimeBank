@@ -1,6 +1,6 @@
 package it.develhope.TimeBank.repository;
 
-import it.develhope.TimeBank.model.entities.User;
+import it.develhope.TimeBank.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

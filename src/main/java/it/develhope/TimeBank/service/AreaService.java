@@ -1,7 +1,7 @@
 package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.exceptions.DirtyDataFoundException;
-import it.develhope.TimeBank.model.entities.Area;
+import it.develhope.TimeBank.model.Area;
 import it.develhope.TimeBank.repository.AreaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

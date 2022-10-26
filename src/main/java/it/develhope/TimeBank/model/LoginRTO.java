@@ -1,6 +1,5 @@
-package it.develhope.TimeBank.model.DTO;
+package it.develhope.TimeBank.model;
 
-import it.develhope.TimeBank.model.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

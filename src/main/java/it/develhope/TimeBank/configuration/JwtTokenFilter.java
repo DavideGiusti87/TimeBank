@@ -1,12 +1,13 @@
-package it.develhope.TimeBank;
+package it.develhope.TimeBank.configuration;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
-import it.develhope.TimeBank.model.entities.User;
+import it.develhope.TimeBank.model.User;
 import it.develhope.TimeBank.repository.UserRepository;
+import it.develhope.TimeBank.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -57,7 +58,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
         DecodedJWT decodedJWT;
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC512("0813ec65-7824-4dbd-b13a-54bfbc99930b")).withIssuer("develhope-demo").build();
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC512(AuthService.JWT_SECRET)).withIssuer("develhope-demo").build();
             decodedJWT = verifier.verify(token);
         }catch (JWTVerificationException ex){
             filterChain.doFilter(request, response);

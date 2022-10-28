@@ -36,7 +36,18 @@ public class AuthService {
                 new Role("REGISTERED"),
                 new Role("ADMIN")
         ));
-        return roleRepository.saveAll(roles);
+        // preparo una lista vuota dove inserire i ruoli che ho effettivamente inserito nel db
+        List<Role> savedRoles = new ArrayList<>();
+        for (Role role : roles) {
+            // controllo se il ruolo in questione esiste già
+            if(!roleRepository.findByName(role.getName()).isPresent()) {
+                // se non esiste lo creo, e lo aggiungo alla lista di ruoli creati
+                savedRoles.add(roleRepository.save(role));
+            }
+            // altrimenti non faccio niente - non c'è bisogno di un else
+        }
+        // restituisco la lista di ruoli creati
+        return savedRoles;
     }
 
     public User signup(SignupDTO signupDTO) throws Exception{

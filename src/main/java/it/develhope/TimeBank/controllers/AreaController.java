@@ -34,4 +34,11 @@ public class AreaController {
         return ResponseEntity.status(HttpStatus.OK).body(createdAreas);
     }
 
+    // Main CRUD functions
+    // TODO delete a single area
+    // TODO delete all areas
+    // TODO update an area
+    // TODO view a single area
+    // TODO view all areas
+
 }

@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,6 +43,8 @@ public class RequestController {
     }
 
 
+    // TODO in createNew l'utente deve essere loggato e le sue informazioni di contatto devono essere prese dalla sua utenza
+    @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
     @PostMapping("/createNew")
     public ResponseEntity createNew(@RequestBody RequestDTO requestDTO, Principal principal) {
         try {

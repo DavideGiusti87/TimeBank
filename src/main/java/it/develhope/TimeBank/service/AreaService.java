@@ -56,4 +56,15 @@ public class AreaService {
         return areaRepository.save(area);
     }
 
+    public List<Area> getAllAreas(){
+        return areaRepository.findAll();
+    }
+
+    public Area update(Area area) {
+        return areaRepository.save(area);
+    }
+
+    public void deleteAreaById(long id) {
+        areaRepository.deleteById(id);
+    }
 }

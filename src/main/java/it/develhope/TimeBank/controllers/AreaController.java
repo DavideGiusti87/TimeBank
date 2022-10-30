@@ -20,11 +20,35 @@ public class AreaController {
     @Autowired
     AreaService areaService;
 
+/*
+    {
+        "region":       "Campania",
+        "town":         "Napoli",
+        "neighborhood": "Portici"
+    }
+
+*/
+
     @PostMapping("/create")
     public ResponseEntity createArea(@RequestBody Area area) {
         return ResponseEntity.status(HttpStatus.OK).body(areaService.createNewArea(area));
     }
+/*
 
+    [
+        {
+            "region":           "Sicilia",
+            "town":             "Palermo",
+            "neighborhood":     "Borgo Nuovo"
+        },
+        {
+            "region":           "Lazio",
+            "town":             "Roma",
+            "neighborhood":     "Collatino"
+        }
+    ]
+
+ */
     @PostMapping("/createMany")
     public ResponseEntity createManyAreas(@RequestBody Area[] areas) {
         List<Area> createdAreas = new ArrayList<>();

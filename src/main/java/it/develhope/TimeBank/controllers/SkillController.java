@@ -23,6 +23,13 @@ public class SkillController {
 
     private static final Logger logger = LoggerFactory.getLogger(SkillController.class);
 
+/*
+    {
+        "name": "Idraulica",
+        "description": "Riparazione tubi"
+    }
+*/
+
     @PostMapping("/create")
     @ApiOperation(value = "create", notes = "create a skill")
     public ResponseEntity create(@RequestBody Skill skill){
@@ -34,6 +41,19 @@ public class SkillController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
+
+/*
+    [
+        {
+            "name": "Idraulica1",
+            "description": "Riparazione tubi"
+        },
+        {
+            "name": "Idraulica2",
+            "description": "Riparazione tubi"
+        }
+    ]
+*/
 
     @PostMapping("/createMany")
     @ApiOperation(value = "createMany", notes = "create skills massively")

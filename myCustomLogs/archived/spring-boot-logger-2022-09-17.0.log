@@ -1,0 +1,62 @@
+2022-09-17 10:39:32,521 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 18.0.2.1 on DESKTOP-74SCBF5 with PID 18188 (C:\Users\Angel0\IdeaProjects\TimeBankRemote\target\classes started by Angelo in C:\Users\Angel0\IdeaProjects\TimeBankRemote)
+2022-09-17 10:39:32,525 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-09-17 10:39:32,603 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-17 10:39:32,604 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-17 10:39:33,794 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 10:39:33,958 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 135 ms. Found 6 JPA repository interfaces.
+2022-09-17 10:39:35,085 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-09-17 10:39:35,104 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-17 10:39:35,105 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-09-17 10:39:35,105 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.0.22]
+2022-09-17 10:39:35,225 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-09-17 10:39:35,227 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2620 ms
+2022-09-17 10:39:35,557 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 10:39:35,632 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 6.1.1.Final
+2022-09-17 10:39:35,918 WARN org.hibernate.boot.internal.MetadataBuilderImpl$MetadataBuildingOptionsImpl [restartedMain] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-09-17 10:39:36,110 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-09-17 10:39:36,536 INFO com.zaxxer.hikari.pool.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@27a60d1e
+2022-09-17 10:39:36,538 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-09-17 10:39:36,561 INFO org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 10:39:36,561 WARN org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl [restartedMain] HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2022-09-17 10:39:36,907 WARN org.hibernate.cfg.AnnotationBinder [restartedMain] HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: it.develhope.TimeBank.entities.Volunteer
+2022-09-17 10:39:38,157 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-17 10:39:38,166 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 10:39:39,072 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-17 10:39:39,538 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-09-17 10:39:39,556 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-09-17 10:39:39,592 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-17 10:39:39,604 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 8.254 seconds (process running for 9.265)
+2022-09-17 10:39:50,597 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 10:39:50,603 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-09-17 10:39:50,613 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-09-17 11:29:05,895 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 18.0.2.1 on DESKTOP-74SCBF5 with PID 8208 (C:\Users\Angel0\IdeaProjects\TimeBankRemote\target\classes started by Angelo in C:\Users\Angel0\IdeaProjects\TimeBankRemote)
+2022-09-17 11:29:05,900 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-09-17 11:29:05,975 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-17 11:29:05,976 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-17 11:29:06,793 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 11:29:06,900 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 87 ms. Found 6 JPA repository interfaces.
+2022-09-17 11:29:07,760 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-09-17 11:29:07,776 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-17 11:29:07,777 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-09-17 11:29:07,777 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.0.22]
+2022-09-17 11:29:07,905 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-09-17 11:29:07,908 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1929 ms
+2022-09-17 11:29:08,185 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 11:29:08,246 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 6.1.1.Final
+2022-09-17 11:29:08,489 WARN org.hibernate.boot.internal.MetadataBuilderImpl$MetadataBuildingOptionsImpl [restartedMain] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-09-17 11:29:08,641 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-09-17 11:29:09,042 INFO com.zaxxer.hikari.pool.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@494a8313
+2022-09-17 11:29:09,044 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-09-17 11:29:09,068 INFO org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 11:29:09,069 WARN org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl [restartedMain] HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2022-09-17 11:29:09,352 WARN org.hibernate.cfg.AnnotationBinder [restartedMain] HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: it.develhope.TimeBank.entities.Volunteer
+2022-09-17 11:29:10,310 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-17 11:29:10,322 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 11:29:10,985 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-17 11:29:11,381 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-09-17 11:29:11,397 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-09-17 11:29:11,424 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-17 11:29:11,433 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 6.237 seconds (process running for 7.37)
+2022-09-17 11:29:23,522 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 11:29:23,528 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-09-17 11:29:23,538 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

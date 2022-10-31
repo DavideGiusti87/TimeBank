@@ -23,7 +23,6 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/requests")
-
 public class RequestController {
 
     Logger logger = LoggerFactory.getLogger(RequestController.class);

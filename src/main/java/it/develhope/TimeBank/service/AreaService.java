@@ -67,4 +67,8 @@ public class AreaService {
     public void deleteAreaById(long id) {
         areaRepository.deleteById(id);
     }
+
+    public void deleteAll() {
+        areaRepository.deleteAll();
+    }
 }

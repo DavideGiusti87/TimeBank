@@ -62,6 +62,7 @@ public class AuthService {
         user.setName(signupDTO.getName());
         user.setSurname(signupDTO.getSurname());
         user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
+        user.setTelephoneNumber(signupDTO.getTelephoneNumber());
         user.setEmail(signupDTO.getEmail());
         user.setActivationCode(UUID.randomUUID().toString());
 
@@ -70,7 +71,7 @@ public class AuthService {
         if (!userRole.isPresent())throw new Exception("Role not found");
         roles.add(userRole.get());
         user.setRoles(roles);
-        //mailNotificationService.sendActivationMail(user);
+//        mailNotificationService.sendActivationMail(user);
         return userRepository.save(user);
     }
 

@@ -105,6 +105,9 @@ public class User {
     }
 
     public String getUsername() {
+        if (username == null){
+            username = name;
+        }
         return username;
     }
 

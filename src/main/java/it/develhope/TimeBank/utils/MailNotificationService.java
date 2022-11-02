@@ -18,7 +18,7 @@ public class MailNotificationService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(user.getEmail());
-        message.setFrom("XXXX@gmail.com");
+        message.setFrom("XXXXXXX@gmail.com");
         message.setSubject("Ti sei iscritto alla piattaforma");
         message.setText("Il codice di attivazione è: " + user.getActivationCode());
         mailSender.send(message);

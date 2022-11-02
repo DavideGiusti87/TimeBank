@@ -1,6 +1,5 @@
 package it.develhope.TimeBank.service;
 
-import it.develhope.TimeBank.exceptions.MissingAreaException;
 import it.develhope.TimeBank.model.*;
 import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.repository.SkillRepository;
@@ -74,4 +73,15 @@ public class RequestService {
         return requestRepository.save(newRequest);
     }
 
+
+    public List<Request> getAll() {
+        return requestRepository.findAll();
+    }
+
+    public Optional<Request> getExecution(String volunteer) {
+        if(volunteer.isEmpty()||volunteer.isBlank()){
+            return requestRepository.findByVolunteer(null);
+        }
+        return requestRepository.findByVolunteer(volunteer);
+    }
 }

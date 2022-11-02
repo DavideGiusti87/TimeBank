@@ -10,6 +10,8 @@ public class SignupDTO {
     /** User password clear */
     private String password;
 
+    private String telephoneNumber;
+
     public SignupDTO() {
     }
 
@@ -18,6 +20,14 @@ public class SignupDTO {
         this.surname = surname;
         this.email = email;
         this.password = password;
+    }
+
+    public SignupDTO(String name, String surname, String email, String password, String telephoneNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.telephoneNumber = telephoneNumber;
     }
 
     public String getName() {
@@ -50,5 +60,13 @@ public class SignupDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 }

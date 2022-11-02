@@ -1,6 +1,5 @@
 package it.develhope.TimeBank.controllers;
 
-import it.develhope.TimeBank.exceptions.MissingAreaException;
 import it.develhope.TimeBank.model.AnonymousRequestDTO;
 import it.develhope.TimeBank.model.RequestDTO;
 import it.develhope.TimeBank.model.Request;
@@ -13,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -56,4 +52,30 @@ public class RequestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+/*
+TODO vedere tutte le richieste, vedere solo quelle non ancora accettate, vedere quelle accettate da un preciso volontario
+
+    @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
+    @PostMapping("/view")
+    public ResponseEntity getAll() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.getAll());
+        }catch(Exception ex){
+            logger.error(ex.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
+    @GetMapping("/viewExecution")
+    public ResponseEntity getExecution(@RequestParam String id) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.getExecution(id));
+        }catch(Exception ex){
+            logger.error(ex.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+ */
 }

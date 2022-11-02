@@ -71,7 +71,7 @@ public class SkillController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") //non manca il @PathVariable?
     @ApiOperation(value = "id", notes = "update a skill")
     public ResponseEntity update(@RequestBody @NonNull Skill skill) throws Exception{
 

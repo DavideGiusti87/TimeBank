@@ -2,6 +2,7 @@ package it.develhope.TimeBank.service;
 
 import it.develhope.TimeBank.model.User;
 import it.develhope.TimeBank.repository.UserRepository;
+import it.develhope.TimeBank.utils.MailNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,8 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    MailNotificationService mailNotificationService;
 
     private User anonymousUser = null;
 
@@ -18,6 +21,7 @@ public class UserService {
         if (anonymousUser == null) {
             anonymousUser = userRepository.save(new User());
             anonymousUser.setUsername("Anonymous");
+
         }
         return anonymousUser;
     }

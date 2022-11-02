@@ -5,8 +5,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/timebank
-    username:
-    password:
+    username: root
+    password: 1234
   jpa:
     database: mysql
     show-sql: true
@@ -16,8 +16,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: xxxxxxxxxxxxxxxxx
-    password: 00000000000000000
+    username: XXXXXXXX@gmail.com
+    password: XXXX
     properties:
       mail:
         smtp:

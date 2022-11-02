@@ -24,8 +24,8 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-     @Autowired
-     private MailNotificationService mailNotificationService;
+//     @Autowired
+//     private MailNotificationService mailNotificationService;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -70,7 +70,7 @@ public class AuthService {
         if (!userRole.isPresent())throw new Exception("Role not found");
         roles.add(userRole.get());
         user.setRoles(roles);
-        mailNotificationService.sendActivationMail(user);
+        //mailNotificationService.sendActivationMail(user);
         return userRepository.save(user);
     }
 

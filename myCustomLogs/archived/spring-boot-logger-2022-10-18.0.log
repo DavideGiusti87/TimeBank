@@ -1,0 +1,198 @@
+2022-10-18 22:57:46,486 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 17.0.1 on PcDadde with PID 5012 (C:\Users\Davide\Desktop\TimeBank\target\classes started by Davide in C:\Users\Davide\Desktop\TimeBank)
+2022-10-18 22:57:46,527 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-10-18 22:57:46,988 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-18 22:57:46,989 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-18 22:57:53,125 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 22:57:53,464 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 324 ms. Found 6 JPA repository interfaces.
+2022-10-18 22:57:57,745 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-10-18 22:57:57,845 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-18 22:57:57,847 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-10-18 22:57:57,848 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-18 22:57:58,237 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-10-18 22:57:58,237 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 11246 ms
+2022-10-18 22:57:59,492 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-18 22:58:00,030 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-18 22:58:01,132 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-18 22:58:02,051 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-10-18 22:58:06,385 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-10-18 22:58:06,721 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-10-18 22:58:13,911 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-18 22:58:13,949 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 22:58:17,256 WARN org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: 514514d2-6a55-4c13-b576-6589706dc1e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-10-18 22:58:17,745 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5bfe26e2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@59451dd, org.springframework.security.web.context.SecurityContextPersistenceFilter@45a39fd, org.springframework.security.web.header.HeaderWriterFilter@7d345da1, org.springframework.security.web.authentication.logout.LogoutFilter@482e5d1f, it.develhope.TimeBank.JwtTokenFilter@45744c31, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@758029b7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68f50677, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f2e4330, org.springframework.security.web.session.SessionManagementFilter@38a78715, org.springframework.security.web.access.ExceptionTranslationFilter@48d72ffd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7f94b1ad]
+2022-10-18 22:58:18,168 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-10-18 22:58:18,730 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-10-18 22:58:18,897 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-18 22:58:19,621 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 36.742 seconds (JVM running for 41.643)
+2022-10-18 23:00:15,689 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:00:15,719 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-10-18 23:00:15,932 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-10-18 23:08:54,019 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 17.0.1 on PcDadde with PID 4856 (C:\Users\Davide\Desktop\TimeBank\target\classes started by Davide in C:\Users\Davide\Desktop\TimeBank)
+2022-10-18 23:08:54,023 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:08:54,283 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-18 23:08:54,286 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-18 23:08:57,467 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:08:58,059 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 570 ms. Found 6 JPA repository interfaces.
+2022-10-18 23:09:05,134 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-10-18 23:09:05,217 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:09:05,219 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-10-18 23:09:05,220 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-18 23:09:06,019 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-10-18 23:09:06,019 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 11729 ms
+2022-10-18 23:09:07,530 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-18 23:09:07,943 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-18 23:09:08,960 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-18 23:09:09,208 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-10-18 23:09:10,757 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-10-18 23:09:10,840 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-10-18 23:09:13,497 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-18 23:09:13,514 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:09:17,322 WARN org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: e0ff4055-1c82-44f1-9386-fe52b44d90e2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-10-18 23:09:17,598 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1cbd28ec, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a2c8135, org.springframework.security.web.context.SecurityContextPersistenceFilter@67eedd00, org.springframework.security.web.header.HeaderWriterFilter@29559757, org.springframework.security.web.authentication.logout.LogoutFilter@84ddd2e, it.develhope.TimeBank.JwtTokenFilter@234d0c69, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7bb076df, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a18dbaa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e83e9e9, org.springframework.security.web.session.SessionManagementFilter@72886750, org.springframework.security.web.access.ExceptionTranslationFilter@64b5d5e1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d536baa]
+2022-10-18 23:09:17,917 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-10-18 23:09:18,398 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-18 23:09:19,052 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 26.651 seconds (JVM running for 28.511)
+2022-10-18 23:09:19,114 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:09:19,119 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-10-18 23:09:19,139 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-10-18 23:09:33,715 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 17.0.1 on PcDadde with PID 7804 (C:\Users\Davide\Desktop\TimeBank\target\classes started by Davide in C:\Users\Davide\Desktop\TimeBank)
+2022-10-18 23:09:33,719 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:09:34,028 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-18 23:09:34,029 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-18 23:09:36,945 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:09:37,139 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 172 ms. Found 6 JPA repository interfaces.
+2022-10-18 23:09:39,517 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-10-18 23:09:39,868 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 5835 ms
+2022-10-18 23:09:40,396 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-18 23:09:40,530 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-18 23:09:40,969 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-18 23:09:41,258 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-10-18 23:09:41,891 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-10-18 23:09:41,932 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-10-18 23:09:44,266 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-18 23:09:44,277 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:09:46,568 WARN org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: 5c12990c-4768-4b71-9f18-d60877c13a78
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-10-18 23:09:47,349 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b803a0d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@411052b2, org.springframework.security.web.context.SecurityContextPersistenceFilter@68d3acf7, org.springframework.security.web.header.HeaderWriterFilter@48d72ffd, org.springframework.security.web.authentication.logout.LogoutFilter@62fcda81, it.develhope.TimeBank.JwtTokenFilter@443f5fc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45a39fd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f0f032a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5bfe26e2, org.springframework.security.web.session.SessionManagementFilter@39653e2c, org.springframework.security.web.access.ExceptionTranslationFilter@48f80636, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3ca6c5ce]
+2022-10-18 23:09:47,852 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-10-18 23:09:49,007 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-18 23:09:49,665 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 17.148 seconds (JVM running for 18.652)
+2022-10-18 23:09:49,737 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:09:49,743 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-10-18 23:09:49,765 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-10-18 23:10:23,921 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 17.0.1 on PcDadde with PID 14612 (C:\Users\Davide\Desktop\TimeBank\target\classes started by Davide in C:\Users\Davide\Desktop\TimeBank)
+2022-10-18 23:10:23,926 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:10:24,150 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-18 23:10:24,151 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-18 23:10:26,787 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:10:27,034 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 217 ms. Found 6 JPA repository interfaces.
+2022-10-18 23:10:29,181 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-10-18 23:10:29,206 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:10:29,208 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-10-18 23:10:29,209 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-18 23:10:29,538 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-10-18 23:10:29,539 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 5386 ms
+2022-10-18 23:10:30,085 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-18 23:10:30,201 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-18 23:10:30,631 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-18 23:10:30,934 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-10-18 23:10:31,663 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-10-18 23:10:31,702 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-10-18 23:10:34,233 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-18 23:10:34,244 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:10:36,671 WARN org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: 8b0aa214-0b41-48c5-bd89-7b9f88115c6e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-10-18 23:10:36,976 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3cda50b6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39238f97, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ba1338d, org.springframework.security.web.header.HeaderWriterFilter@723f3d54, org.springframework.security.web.authentication.logout.LogoutFilter@701b6c61, it.develhope.TimeBank.JwtTokenFilter@2bdbdcad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ad4fc50, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@482e5d1f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58087524, org.springframework.security.web.session.SessionManagementFilter@71b2caab, org.springframework.security.web.access.ExceptionTranslationFilter@4cb6611a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3b411bbb]
+2022-10-18 23:10:37,262 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-10-18 23:10:37,721 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:10:37,803 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-18 23:10:38,891 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 16.201 seconds (JVM running for 17.765)
+2022-10-18 23:14:16,866 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:14:16,875 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-10-18 23:14:16,914 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-10-18 23:14:26,758 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 17.0.1 on PcDadde with PID 11784 (C:\Users\Davide\Desktop\TimeBank\target\classes started by Davide in C:\Users\Davide\Desktop\TimeBank)
+2022-10-18 23:14:26,763 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:14:26,952 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-18 23:14:26,953 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-18 23:14:29,309 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:14:29,495 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 165 ms. Found 6 JPA repository interfaces.
+2022-10-18 23:14:31,453 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-10-18 23:14:31,474 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:14:31,476 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-10-18 23:14:31,477 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-18 23:14:31,775 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-10-18 23:14:31,776 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4820 ms
+2022-10-18 23:14:32,468 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-18 23:14:32,608 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-18 23:14:33,071 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-18 23:14:33,339 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-10-18 23:14:33,977 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-10-18 23:14:34,010 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-10-18 23:14:36,139 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-18 23:14:36,152 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:14:38,397 WARN org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: 189c537b-b35c-4240-842f-9774d48ede1b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-10-18 23:14:38,692 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a527b8e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7059f400, org.springframework.security.web.context.SecurityContextPersistenceFilter@c7bb8bb, org.springframework.security.web.header.HeaderWriterFilter@41a22e66, org.springframework.security.web.authentication.logout.LogoutFilter@230af7ca, it.develhope.TimeBank.JwtTokenFilter@4687a96d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56fe3adf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@542d056b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5de86b03, org.springframework.security.web.session.SessionManagementFilter@58fa60cf, org.springframework.security.web.access.ExceptionTranslationFilter@50592043, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@74f1813b]
+2022-10-18 23:14:38,997 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-10-18 23:14:39,454 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:14:39,495 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-18 23:14:40,165 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 14.586 seconds (JVM running for 15.907)
+2022-10-18 23:17:48,423 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:17:48,440 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-10-18 23:17:48,455 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-10-18 23:17:57,720 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TimeBankApplication using Java 17.0.1 on PcDadde with PID 16388 (C:\Users\Davide\Desktop\TimeBank\target\classes started by Davide in C:\Users\Davide\Desktop\TimeBank)
+2022-10-18 23:17:57,724 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:17:57,954 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-18 23:17:57,954 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-18 23:18:00,862 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:18:01,093 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 202 ms. Found 6 JPA repository interfaces.
+2022-10-18 23:18:03,564 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-10-18 23:18:03,612 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:18:03,614 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-10-18 23:18:03,615 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-18 23:18:04,014 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-10-18 23:18:04,016 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 6059 ms
+2022-10-18 23:18:04,621 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-18 23:18:04,750 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-18 23:18:05,215 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-18 23:18:05,463 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-10-18 23:18:06,401 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-10-18 23:18:06,431 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-10-18 23:18:08,746 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-18 23:18:08,759 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:18:11,048 WARN org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration [restartedMain] 
+
+Using generated security password: 3ce5e566-afd9-4120-b165-f9e94f0e9dbe
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-10-18 23:18:11,355 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@102c9e43, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21a7c631, org.springframework.security.web.context.SecurityContextPersistenceFilter@2fc216e9, org.springframework.security.web.header.HeaderWriterFilter@68d3acf7, org.springframework.security.web.authentication.logout.LogoutFilter@1216744f, it.develhope.TimeBank.JwtTokenFilter@727bd316, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c03b30a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11709e1c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4810bebf, org.springframework.security.web.session.SessionManagementFilter@723f3d54, org.springframework.security.web.access.ExceptionTranslationFilter@40978cc4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3c1cb08c]
+2022-10-18 23:18:11,671 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-10-18 23:18:12,148 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-10-18 23:18:12,190 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-18 23:18:12,871 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TimeBankApplication in 16.41 seconds (JVM running for 17.928)
+2022-10-18 23:18:35,791 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:18:35,810 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-10-18 23:18:35,851 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

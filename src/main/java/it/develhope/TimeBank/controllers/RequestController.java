@@ -55,9 +55,9 @@ public class RequestController {
     }
 
 // TODO vedere tutte le richieste, vedere solo quelle non ancora accettate, vedere quelle accettate da un preciso volontario
-
+//il file JSON non mostra l'id della richiesta
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
-    @PostMapping("/view")
+    @GetMapping("/view")
     public ResponseEntity getAll() {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(requestService.getAll());
@@ -66,7 +66,7 @@ public class RequestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
-
+//se l'id del volontario è nullo fa vedere solo le richieste del volontario loggato altrimenti del volonotario a cui corrisponde l'id passato
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
     @GetMapping("/getAllByVolunteer")
     public ResponseEntity getAllByVolunteer(@RequestParam Long volunteerId, Principal principal) {
@@ -82,6 +82,7 @@ public class RequestController {
         }
     }
 
+    //prende in consegna la richiesta dal volontario
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
     @PostMapping("/takeOverRequest")
     public ResponseEntity takeOverRequest(@RequestParam Long requestId, Principal principal) {

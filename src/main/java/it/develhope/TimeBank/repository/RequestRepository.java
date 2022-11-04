@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface RequestRepository extends JpaRepository<Request, Long> {
     Optional<Request> findByVolunteer(String volunteer);
+
+    Optional<Request> findByVolunteerIsNull();
 }

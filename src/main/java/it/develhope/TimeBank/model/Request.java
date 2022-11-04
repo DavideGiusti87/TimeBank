@@ -128,4 +128,12 @@ public class Request extends BaseEntity {
     public void setVolunteer(User volunteer) {
         this.volunteer = volunteer;
     }
+
+    /*
+    se volunteer è null -> ritorna false (non c'è un volunteer, quindi non è presa in carico)
+     */
+    public boolean isTakenOver() {
+        return volunteer != null;
+    }
+
 }

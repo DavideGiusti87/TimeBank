@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.controllers;
 
+import it.develhope.TimeBank.exceptions.RequestNotFoundException;
 import it.develhope.TimeBank.model.AnonymousRequestDTO;
 import it.develhope.TimeBank.model.RequestDTO;
 import it.develhope.TimeBank.model.Request;
@@ -67,14 +68,33 @@ public class RequestController {
     }
 
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
-    @GetMapping("/viewExecution")
-    public ResponseEntity getExecution(@RequestParam String id) {
+    @GetMapping("/getAllByVolunteer")
+    public ResponseEntity getAllByVolunteer(@RequestParam Long volunteerId, Principal principal) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(requestService.getExecution(id));
+            if (volunteerId == null) {
+                User user = (User) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();
+                return ResponseEntity.status(HttpStatus.OK).body(requestService.getAllByVolunteer(user.getId()));
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.getAllByVolunteer(volunteerId));
         }catch(Exception ex){
             logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
+
+    @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
+    @PostMapping("/takeOverRequest")
+    public ResponseEntity takeOverRequest(@RequestParam Long requestId, Principal principal) {
+        User user = (User) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(requestService.takeOverRequest(requestId, user));
+        } catch (RequestNotFoundException e) {
+            logger.warn(e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+
 
 }

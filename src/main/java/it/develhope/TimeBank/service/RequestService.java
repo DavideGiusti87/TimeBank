@@ -1,5 +1,6 @@
 package it.develhope.TimeBank.service;
 
+import it.develhope.TimeBank.exceptions.RequestNotFoundException;
 import it.develhope.TimeBank.model.*;
 import it.develhope.TimeBank.repository.RequestRepository;
 import it.develhope.TimeBank.repository.SkillRepository;
@@ -78,10 +79,21 @@ public class RequestService {
         return requestRepository.findAll();
     }
 
-    public Optional<Request> getExecution(String volunteer) {
-        if(volunteer.isEmpty()||volunteer.isBlank()){
-            return requestRepository.findByVolunteer(null);
+    public Optional<Request> getAllByVolunteer(Long volunteerId) {
+        if(volunteerId == null){
+            return requestRepository.findByVolunteerId(null);
         }
-        return requestRepository.findByVolunteer(volunteer);
+        return requestRepository.findByVolunteerId(volunteerId);
     }
+
+    public Request takeOverRequest(Long requestId, User volunteer) throws RequestNotFoundException {
+        Optional<Request> optionalRequest = requestRepository.findById(requestId);
+        if (!optionalRequest.isPresent()) {
+            throw new RequestNotFoundException(String.format("Cannot find request with id: %d", requestId));
+        }
+        Request updatedRequest = optionalRequest.get();
+        updatedRequest.setVolunteer(volunteer);
+        return requestRepository.save(updatedRequest);
+    }
+
 }

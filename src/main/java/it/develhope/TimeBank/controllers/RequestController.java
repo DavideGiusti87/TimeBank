@@ -52,8 +52,8 @@ public class RequestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-/*
-TODO vedere tutte le richieste, vedere solo quelle non ancora accettate, vedere quelle accettate da un preciso volontario
+
+// TODO vedere tutte le richieste, vedere solo quelle non ancora accettate, vedere quelle accettate da un preciso volontario
 
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
     @PostMapping("/view")
@@ -77,5 +77,4 @@ TODO vedere tutte le richieste, vedere solo quelle non ancora accettate, vedere 
         }
     }
 
- */
 }

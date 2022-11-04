@@ -23,13 +23,13 @@ public class Request extends BaseEntity {
     private String username;
     private String phoneNumber;
     private String email;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="area_id")
     private Area area;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Skill> requiredSkills;
     // sempre null al momento della creazione della richiesta; viene valorizzato al momento della presa in carico
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="volunteer_id")
     private User volunteer;
 

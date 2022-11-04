@@ -1,5 +1,7 @@
 package it.develhope.TimeBank.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,9 +17,11 @@ public class Area extends BaseEntity {
     private String neighborhood;
 
     @OneToMany(mappedBy = "area")
+    @JsonIgnore
     private List<User> usersInThisArea;
 
     @OneToMany(mappedBy = "area")
+    @JsonIgnore
     private List<Request> requestsInThisArea;
 
     public Area() {

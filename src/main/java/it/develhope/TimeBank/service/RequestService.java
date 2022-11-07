@@ -97,6 +97,6 @@ public class RequestService {
     }
 
     public Optional<Request> getWithVolunteerNull() {
-        return requestRepository.findByVolunteerIsNull();
+        return requestRepository.findByVolunteerIdIsNull();
     }
 }

@@ -95,10 +95,10 @@ public class RequestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-    //per vedere solo le richieste non ancora prese in carico... ma non funziona
+    //per vedere solo le richieste non ancora prese in carico
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
-    @GetMapping("/viewAllToTaken")
-    public ResponseEntity viewAllNoTaken() {
+    @GetMapping("/viewAllNotTakeOver")
+    public ResponseEntity viewAllNotTakeOver() {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(requestService.getWithVolunteerNull());
         }catch(Exception ex){

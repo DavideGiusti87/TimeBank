@@ -69,7 +69,7 @@ public class RequestController {
 //se l'id del volontario è nullo fa vedere solo le richieste del volontario loggato altrimenti del volonotario a cui corrisponde l'id passato
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
     @GetMapping("/getAllByVolunteer")
-    public ResponseEntity getAllByVolunteer(@RequestParam Long volunteerId, Principal principal) {
+    public ResponseEntity getAllByVolunteer(@RequestParam(required = false) Long volunteerId, Principal principal) {
         try {
             if (volunteerId == null) {
                 User user = (User) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();

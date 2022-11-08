@@ -53,6 +53,7 @@ public class AuthController {
 
     @PostMapping("/signup/{role}")
     public User signup(@RequestBody SignupDTO signupDTO, @PathVariable String role) throws Exception {
+        logger.info("Registration successful!");
         return authService.signup(signupDTO,role);
     }
 

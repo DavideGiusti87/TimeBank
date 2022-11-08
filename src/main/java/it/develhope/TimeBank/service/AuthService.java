@@ -113,7 +113,7 @@ public class AuthService {
         //https://mkyong.com/java8/java-8-how-to-convert-a-stream-to-array/
         String[] roles = user.getRoles().stream().map(role -> role.getName()).toArray(String[]::new);
         return JWT.create()
-                .withIssuer("develhope-demo")
+                .withIssuer("Java-4-Team-3")
                 .withIssuedAt(new Date())
                 .withExpiresAt(expiresAt)
                 .withClaim("roles", String.join(",", roles))

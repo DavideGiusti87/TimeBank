@@ -58,7 +58,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
         DecodedJWT decodedJWT;
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC512(AuthService.JWT_SECRET)).withIssuer("develhope-demo").build();
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC512(AuthService.JWT_SECRET)).withIssuer("Java-4-Team-3").build();
             decodedJWT = verifier.verify(token);
         }catch (JWTVerificationException ex){
             filterChain.doFilter(request, response);

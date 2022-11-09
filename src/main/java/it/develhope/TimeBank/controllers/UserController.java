@@ -63,7 +63,7 @@ public class UserController {
     }
 
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     @ApiOperation(value = "id", notes = "get user by id")
     public ResponseEntity getUserById(@PathVariable Long id) {
 
@@ -75,8 +75,8 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
-
-    @GetMapping("/{username}")
+/*  TODO non funziona
+    @GetMapping("/username/{username}")
     @ApiOperation(value = "username", notes = "get user by username")
     public ResponseEntity getUserByUsername(@PathVariable String username) {
 
@@ -88,7 +88,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
-
+*/
     @PreAuthorize("hasRole('ROLE_REGISTERED') or hasRole('ROLE_ADMIN')")
     @DeleteMapping("/delete")
     @ApiOperation(value = "principal", notes = "delete user by principal")
@@ -97,7 +97,8 @@ public class UserController {
         try {
             logger.info("Delete logged user");
             User user = (User) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();
-            return ResponseEntity.status(HttpStatus.OK).body(userService.deleteById(user.getId()));
+           // return ResponseEntity.status(HttpStatus.OK).body(userService.deleteById(user.getId()));
+            return ResponseEntity.status(HttpStatus.OK).body(userService.deleteById(user));
         }catch(Exception ex){
             logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());

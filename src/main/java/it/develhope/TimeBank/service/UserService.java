@@ -35,12 +35,11 @@ public class UserService {
         user.setName(updatedUser.getName());
         user.setSurname(updatedUser.getSurname());
         user.setUsername(updatedUser.getUsername());
-        user.setPassword(updatedUser.getPassword());
         user.setTelephoneNumber(updatedUser.getTelephoneNumber());
         user.setEmail(updatedUser.getEmail());
         user.setArea(updatedUser.getArea());
         user.setSkills(updatedUser.getSkills());
-        return user;
+        return userRepository.save(user);
     }
 
     public List<User> getAllUsers() {
@@ -58,8 +57,8 @@ public class UserService {
     }
 
 
-    public String deleteById(Long id) {
-        userRepository.deleteById(id);
+    public String deleteById(User user) {
+        userRepository.delete(user);
         return "Your account has been successfully deleted!";
     }
 }

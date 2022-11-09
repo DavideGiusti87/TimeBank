@@ -37,4 +37,13 @@ public class SkillService {
     }
 
 
+    public String deleteSkillById(Long id) throws Exception {
+        skillRepository.deleteById(id);
+            return "The skill is deleted!";
+    }
+
+    public String deleteAll() {
+        skillRepository.deleteAll();
+        return "All the skill were deleted.";
+    }
 }

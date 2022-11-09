@@ -110,30 +110,30 @@ public class SkillController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
-/*
+
     @DeleteMapping("/{id}")
     @ApiOperation(value = "delete", notes = "delete a single skill")
     public ResponseEntity delete(@PathVariable Long id){
-
         try {
-            logger.info("Delete a skill by id");
-            return ResponseEntity.status(HttpStatus.OK).body(skillService.deleteById(id));
-        }catch(Exception ex){
-            logger.error(ex.toString());
+            logger.info("Delete single skill");
+            return ResponseEntity.status(HttpStatus.OK).body(skillService.deleteSkillById(id));
+        }catch (Exception ex){
+            logger.warn(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
 
     @DeleteMapping("/deleteAll")
     @ApiOperation(value = "deleteAll", notes = "delete all skills")
-    public ResponseEntity deleteAll(){
+    public ResponseEntity deleteAll() {
 
         try {
             logger.info("Delete all skill");
             return ResponseEntity.status(HttpStatus.OK).body(skillService.deleteAll());
-        }catch(Exception ex){
+        } catch (Exception ex) {
             logger.error(ex.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
-    }*/
+
+    }
 }

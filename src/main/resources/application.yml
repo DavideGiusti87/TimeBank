@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/timebank
     username: root
-    password: 1234
+    password: root
   jpa:
     database: mysql
     show-sql: true

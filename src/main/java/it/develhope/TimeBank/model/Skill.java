@@ -17,11 +17,11 @@ public class Skill extends BaseEntity {
     private String name;
     private String description;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private List<User> users;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Request> request;
 

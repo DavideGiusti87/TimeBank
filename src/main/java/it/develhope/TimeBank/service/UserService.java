@@ -6,6 +6,10 @@ import it.develhope.TimeBank.utils.MailNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -26,4 +30,36 @@ public class UserService {
         return anonymousUser;
     }
 
+
+    public User updateUser(User user, User updatedUser) {
+        user.setName(updatedUser.getName());
+        user.setSurname(updatedUser.getSurname());
+        user.setUsername(updatedUser.getUsername());
+        user.setPassword(updatedUser.getPassword());
+        user.setTelephoneNumber(updatedUser.getTelephoneNumber());
+        user.setEmail(updatedUser.getEmail());
+        user.setArea(updatedUser.getArea());
+        user.setSkills(updatedUser.getSkills());
+        return user;
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
+    }
+
+
+    public Optional<User> getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+
+    public String deleteById(Long id) {
+        userRepository.deleteById(id);
+        return "Your account has been successfully deleted!";
+    }
 }
